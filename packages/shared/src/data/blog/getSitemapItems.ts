@@ -19,11 +19,11 @@ export default async function getSitemapItems() {
     return { ok: false, error: 'Not Found' }
   }
 
-  const items = [
+  const list = [
     toSitemapItems(response.data.all_page_home),
     toSitemapItems(response.data.all_page_generic),
     toSitemapItems(response.data.all_page_post),
   ]
 
-  return { ok: true, data: items.flat() }
+  return { ok: true, data: list.flat() }
 }

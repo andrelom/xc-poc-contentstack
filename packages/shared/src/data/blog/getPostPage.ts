@@ -1,11 +1,13 @@
 import { blog } from '@xc/shared/clients/contentstack'
 
+export type PostPageData = {
+  description: string
+  body: string
+  open_graph: Contentstack.Globals.OpenGraph
+}
+
 export default async function getPostPage({ path }: { path: string }) {
-  const result = await blog.find<{
-    description: string
-    body: string
-    open_graph: Contentstack.Globals.OpenGraph
-  }>('post_page', (query) => {
+  const result = await blog.find<PostPageData>('post_page', (query) => {
     return query.where('url', path).toJSON()
   })
 

@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server'
 import { toSitemapXML } from '@xc/lib/sitemap'
-import getSitemap from '@xc/shared/data/blog/getSitemap'
+import getSitemapItems from '@xc/shared/data/blog/getSitemapItems'
 
 export async function GET() {
-  const result = await getSitemap()
+  const result = await getSitemapItems()
 
   if (!result.ok) {
     return NextResponse.json({ ok: false }, { status: 404 })

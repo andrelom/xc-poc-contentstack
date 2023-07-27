@@ -10,7 +10,7 @@ const toSitemapItems = ({ items }: { items: any[] }) => {
   }))
 }
 
-export default async function getSitemap() {
+export default async function getSitemapItems() {
   const response = await blog.gql.query({
     query: GetSitemapQuery,
   })
@@ -29,8 +29,5 @@ export default async function getSitemap() {
     return [...result, ...links]
   }, [])
 
-  return {
-    ok: true,
-    data: links,
-  }
+  return { ok: true, data: links }
 }

@@ -1,0 +1,8 @@
+query GetAllPosts {
+  all_page_post {
+    items {
+      title
+      url
+    }
+  }
+}

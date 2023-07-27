@@ -1,9 +1,9 @@
 import { blog } from '@xc/shared/clients/contentstack'
 
-export type GenericPageData = {
+export type GenericPageData = Contentstack.Item<{
   modular_blocks_main: Record<string, any>[]
   open_graph: Contentstack.Globals.OpenGraph
-}
+}>
 
 export default async function getGenericPage({ path }: { path: string }): Promise<Core.Result<GenericPageData>> {
   const result = await blog.api.find<GenericPageData>('page_generic', (query) => {

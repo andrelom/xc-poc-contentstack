@@ -41,7 +41,13 @@ declare namespace Contentstack {
 
     type Date = unknown
 
-    type File = unknown
+    type File = {
+      content_type: string
+      file_size: string
+      filename: string
+      title: string
+      url: url
+    }
 
     type Link = {
       title: string

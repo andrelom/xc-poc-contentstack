@@ -11,9 +11,7 @@ export async function GET() {
 
   const xml = toSitemapXML(result.data ?? [])
 
-  console.log(xml)
-
-  return NextResponse.json(xml, {
+  return new NextResponse(xml, {
     headers: {
       [`content-type`]: 'application/xml',
       [`cache-control`]: 'private, no-cache, no-store, max-age=0, must-revalidate',

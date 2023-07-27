@@ -24,11 +24,24 @@
   @apply flex
          flex-1
          flex-row
-         items-center;
+         items-center
+         sm:px-10
+         lg:px-12;
 }
 
 .Right {
   @apply flex
          flex-row
          items-center;
+}
+
+.Navigation > a {
+  @apply inline-block
+         rounded-lg
+         px-2
+         py-1
+         text-sm
+         text-slate-700
+         hover:bg-slate-100
+         hover:text-slate-900;
 }

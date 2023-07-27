@@ -7,7 +7,7 @@ query GetSitemapQuery {
       }
     }
   }
-  all_page_post {
+  all_page_generic {
     items {
       url
       system {
@@ -15,7 +15,7 @@ query GetSitemapQuery {
       }
     }
   }
-  all_page_generic {
+  all_page_post {
     items {
       url
       system {

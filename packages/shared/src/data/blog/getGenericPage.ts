@@ -5,7 +5,7 @@ export type GenericPageData = {
   open_graph: Contentstack.Globals.OpenGraph
 }
 
-export default async function getGenericPage({ path }: { path: string }) {
+export default async function getGenericPage({ path }: { path: string }): Promise<Core.Result<GenericPageData>> {
   const result = await blog.api.find<GenericPageData>('page_generic', (query) => {
     return query.where('url', path).toJSON()
   })

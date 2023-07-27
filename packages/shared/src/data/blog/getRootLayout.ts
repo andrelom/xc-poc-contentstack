@@ -9,7 +9,7 @@ export type RootLayoutData = {
   }[]
 }
 
-export default async function getRootLayout({}: {}) {
+export default async function getRootLayout({}: {}): Promise<Core.Result<RootLayoutData>> {
   const result = await blog.api.find<RootLayoutData>('layout_root', (query) => {
     return query.toJSON()
   })

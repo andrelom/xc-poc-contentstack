@@ -6,7 +6,7 @@ export type PostPageData = {
   open_graph: Contentstack.Globals.OpenGraph
 }
 
-export default async function getPostPage({ path }: { path: string }) {
+export default async function getPostPage({ path }: { path: string }): Promise<Core.Result<PostPageData>> {
   const result = await blog.api.find<PostPageData>('post_page', (query) => {
     return query.where('url', path).toJSON()
   })

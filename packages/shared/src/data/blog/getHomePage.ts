@@ -5,7 +5,7 @@ export type HomePageData = {
   open_graph: Contentstack.Globals.OpenGraph
 }
 
-export default async function getHomePage() {
+export default async function getHomePage(): Promise<Core.Result<HomePageData>> {
   const result = await blog.api.find<HomePageData>('page_home', (query) => {
     return query.toJSON()
   })

@@ -6,7 +6,7 @@ export type PostsData = {
   url: string
 }[]
 
-export default async function getPosts() {
+export default async function getPosts(): Promise<Core.Result<PostsData>> {
   const response = await blog.gql.query({
     query: GetAllPosts,
   })

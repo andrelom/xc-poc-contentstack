@@ -12,7 +12,7 @@ const toSitemapItems = ({ items }: { items: any[] }, home: boolean = false) => {
 
 export type SitemapItemsData = SitemapItem[]
 
-export default async function getSitemapItems() {
+export default async function getSitemapItems(): Promise<Core.Result<SitemapItemsData>> {
   const response = await blog.gql.query({
     query: GetSitemapQuery,
   })

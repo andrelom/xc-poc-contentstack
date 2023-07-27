@@ -10,6 +10,8 @@ const toSitemapItems = ({ items }: { items: any[] }, home: boolean = false) => {
   }))
 }
 
+export type SitemapItemsData = SitemapItem[]
+
 export default async function getSitemapItems() {
   const response = await blog.gql.query({
     query: GetSitemapQuery,

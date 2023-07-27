@@ -17,7 +17,7 @@ export default function Header({ data }: { data: RootLayoutData | null | undefin
         <div className={css.Center}>
           <div className={css.Navigation}>
             {data.mb_header_navigation.map(({ item }) => (
-              <Link data={item.link} />
+              <Link key={item.link.href} data={item.link} />
             ))}
           </div>
         </div>

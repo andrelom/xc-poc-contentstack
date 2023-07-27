@@ -15,7 +15,7 @@ export default async function getPosts(): Promise<Core.Result<PostsData>> {
     return { ok: false, error: 'Not Found' }
   }
 
-  const data: PostsData = response.data.all_page_post.items
+  const item: PostsData = response.data.all_page_post.items
 
-  return { ok: true, data }
+  return { ok: true, data: item }
 }

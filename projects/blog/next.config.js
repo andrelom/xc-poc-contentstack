@@ -3,6 +3,14 @@ const nextConfig = {
   experimental: {
     externalDir: true,
   },
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap',
+      },
+    ]
+  },
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(graphql)/,

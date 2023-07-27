@@ -9,7 +9,7 @@ export type RootLayoutData = Contentstack.Item<{
   }[]
 }>
 
-export default async function getRootLayout({}: {}): Promise<Core.Result<RootLayoutData>> {
+export default async function getRootLayout(): Promise<Core.Result<RootLayoutData>> {
   const result = await blog.api.find<RootLayoutData>('layout_root', (query) => {
     return query.toJSON()
   })

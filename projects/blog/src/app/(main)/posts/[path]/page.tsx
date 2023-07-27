@@ -11,11 +11,11 @@ export const revalidate = settings.revalidate
 export const dynamic = 'force-static'
 
 export const generateMetadata = createMetadataGenerator(({ params }) => {
-  return getPostPage({ path: `/post/${params.path}` })
+  return getPostPage({ path: `/posts/${params.path}` })
 })
 
 export default async function Page({ params }: Core.Page<{ path: string }>) {
-  const result = await getPostPage({ path: `/post/${params.path}` })
+  const result = await getPostPage({ path: `/posts/${params.path}` })
 
   if (!result.ok || !result.data) {
     return notFound()

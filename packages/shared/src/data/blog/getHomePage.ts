@@ -6,7 +6,7 @@ export type HomePageData = {
 }
 
 export default async function getHomePage() {
-  const result = await blog.find<HomePageData>('page_home', (query) => {
+  const result = await blog.api.find<HomePageData>('page_home', (query) => {
     return query.toJSON()
   })
 

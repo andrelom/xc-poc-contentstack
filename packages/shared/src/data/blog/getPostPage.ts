@@ -7,7 +7,7 @@ export type PostPageData = {
 }
 
 export default async function getPostPage({ path }: { path: string }) {
-  const result = await blog.find<PostPageData>('post_page', (query) => {
+  const result = await blog.api.find<PostPageData>('post_page', (query) => {
     return query.where('url', path).toJSON()
   })
 

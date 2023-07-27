@@ -10,7 +10,7 @@ export type RootLayoutData = {
 }
 
 export default async function getRootLayout({}: {}) {
-  const result = await blog.find<RootLayoutData>('layout_root', (query) => {
+  const result = await blog.api.find<RootLayoutData>('layout_root', (query) => {
     return query.toJSON()
   })
 

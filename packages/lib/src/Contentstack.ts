@@ -13,7 +13,7 @@ export interface Options {
   }
 }
 
-export default class Contentstack {
+export class Contentstack {
   private options: Options
   private stack: Stack
 
@@ -55,4 +55,8 @@ export default class Contentstack {
       },
     })
   }
+}
+
+export function createContentstackClient(options: Options) {
+  return new Contentstack(options)
 }

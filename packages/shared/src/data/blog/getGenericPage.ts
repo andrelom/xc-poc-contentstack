@@ -6,7 +6,7 @@ export type GenericPageData = {
 }
 
 export default async function getGenericPage({ path }: { path: string }) {
-  const result = await blog.find<GenericPageData>('page_generic', (query) => {
+  const result = await blog.api.find<GenericPageData>('page_generic', (query) => {
     return query.where('url', path).toJSON()
   })
 

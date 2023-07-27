@@ -1,0 +1,26 @@
+query GetSitemapQuery {
+  all_page_home {
+    total
+    items {
+      system {
+        updated_at
+      }
+    }
+  }
+  all_page_post {
+    items {
+      url
+      system {
+        updated_at
+      }
+    }
+  }
+  all_page_generic {
+    items {
+      url
+      system {
+        updated_at
+      }
+    }
+  }
+}

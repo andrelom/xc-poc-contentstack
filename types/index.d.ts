@@ -32,3 +32,14 @@ declare namespace NodeJS {
     readonly CONTENTSTACK_LIVE_EDIT_TAGS: string
   }
 }
+
+//
+// GraphQL
+
+declare module '*.graphql' {
+  import type { DocumentNode } from 'graphql'
+
+  const Schema: DocumentNode
+
+  export = Schema
+}

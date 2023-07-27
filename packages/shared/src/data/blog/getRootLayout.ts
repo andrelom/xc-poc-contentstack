@@ -1,11 +1,13 @@
 import { blog } from '@xc/shared/clients/contentstack'
 
+export type RootLayoutData = {
+  group_header: {
+    file_logo: Contentstack.Fields.File
+  }
+}
+
 export default async function getRootLayout({}: {}) {
-  const result = await blog.find<{
-    group_header: {
-      file_logo: Contentstack.Fields.File
-    }
-  }>('layout_root', (query) => {
+  const result = await blog.find<RootLayoutData>('layout_root', (query) => {
     return query.toJSON()
   })
 

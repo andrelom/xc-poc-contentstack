@@ -4,6 +4,9 @@ import GetAllPosts from './queries/GetAllPosts.graphql'
 export type PostsData = {
   title: string
   url: string
+  system: {
+    created_at: string
+  }
 }[]
 
 export default async function getPosts(): Promise<Core.Result<PostsData>> {

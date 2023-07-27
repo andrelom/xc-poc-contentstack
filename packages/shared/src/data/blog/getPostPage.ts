@@ -1,10 +1,10 @@
 import { blog } from '@xc/shared/clients/contentstack'
 
-export type PostPageData = {
+export type PostPageData = Contentstack.Item<{
   description: string
   body: string
   open_graph: Contentstack.Globals.OpenGraph
-}
+}>
 
 export default async function getPostPage({ path }: { path: string }): Promise<Core.Result<PostPageData>> {
   const result = await blog.api.find<PostPageData>('post_page', (query) => {

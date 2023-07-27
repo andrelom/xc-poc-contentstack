@@ -1,10 +1,12 @@
 import { blog } from '@xc/shared/clients/contentstack'
 
+export type HomePageData = {
+  hero_section: Contentstack.Globals.HeroSection
+  open_graph: Contentstack.Globals.OpenGraph
+}
+
 export default async function getHomePage() {
-  const result = await blog.find<{
-    hero_section: Contentstack.Globals.HeroSection
-    open_graph: Contentstack.Globals.OpenGraph
-  }>('page_home', (query) => {
+  const result = await blog.find<HomePageData>('page_home', (query) => {
     return query.toJSON()
   })
 

@@ -54,7 +54,7 @@ export default async function Page({}: Core.Page<{ path: string }>) {
       <div className="mx-auto max-w-4xl">
         <ul role="list" className="divide-y divide-gray-100">
           {data.posts.map((post) => (
-            <li className="flex items-center justify-between gap-x-6 py-5">
+            <li key={post.url} className="flex items-center justify-between gap-x-6 py-5">
               <div className="min-w-0">
                 <div className="flex items-start gap-x-3">
                   <p className="text-sm font-semibold leading-6 text-gray-900">{post.title}</p>

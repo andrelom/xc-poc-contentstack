@@ -3,6 +3,9 @@ query GetAllPosts {
     items {
       title
       url
+      system {
+        created_at
+      }
     }
   }
 }

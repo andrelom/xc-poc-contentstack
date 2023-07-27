@@ -1,13 +1,13 @@
 import { blog } from '@xc/shared/clients/contentstack'
 
-export type RootLayoutData = {
+export type RootLayoutData = Contentstack.Item<{
   image_header_logo: Contentstack.Fields.File
   mb_header_navigation: {
     item: {
       link: Contentstack.Fields.Link
     }
   }[]
-}
+}>
 
 export default async function getRootLayout({}: {}): Promise<Core.Result<RootLayoutData>> {
   const result = await blog.api.find<RootLayoutData>('layout_root', (query) => {

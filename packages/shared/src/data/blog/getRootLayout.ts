@@ -1,9 +1,12 @@
 import { blog } from '@xc/shared/clients/contentstack'
 
 export type RootLayoutData = {
-  group_header: {
-    file_logo: Contentstack.Fields.File
-  }
+  image_header_logo: Contentstack.Fields.File
+  mb_header_navigation: {
+    item: {
+      link: Contentstack.Fields.Link
+    }
+  }[]
 }
 
 export default async function getRootLayout({}: {}) {

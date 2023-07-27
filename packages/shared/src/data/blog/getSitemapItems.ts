@@ -3,9 +3,9 @@ import type { SitemapItem } from '@xc/lib/sitemap'
 import { blog } from '@xc/shared/clients/contentstack'
 import GetSitemapQuery from './queries/GetSitemapQuery.graphql'
 
-const toSitemapItems = ({ items }: { items: any[] }) => {
+const toSitemapItems = ({ items }: { items: any[] }, home: boolean = false) => {
   return items.map<SitemapItem>((item: any) => ({
-    url: item.url ?? '/',
+    url: home ? '/' : item.url,
     date: item.system.updated_at,
   }))
 }
@@ -20,7 +20,7 @@ export default async function getSitemapItems() {
   }
 
   const list = [
-    toSitemapItems(response.data.all_page_home),
+    toSitemapItems(response.data.all_page_home, true),
     toSitemapItems(response.data.all_page_generic),
     toSitemapItems(response.data.all_page_post),
   ]

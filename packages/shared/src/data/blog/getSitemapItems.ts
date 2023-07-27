@@ -19,15 +19,11 @@ export default async function getSitemapItems() {
     return { ok: false, error: 'Not Found' }
   }
 
-  const pages = [
+  const items = [
     toSitemapItems(response.data.all_page_home),
     toSitemapItems(response.data.all_page_generic),
     toSitemapItems(response.data.all_page_post),
   ]
 
-  const links = pages.reduce((result, links) => {
-    return [...result, ...links]
-  }, [])
-
-  return { ok: true, data: links }
+  return { ok: true, data: items.flat() }
 }

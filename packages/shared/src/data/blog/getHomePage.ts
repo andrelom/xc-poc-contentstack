@@ -1,9 +1,9 @@
 import { blog } from '@xc/shared/clients/contentstack'
 
-export type HomePageData = {
+export type HomePageData = Contentstack.Item<{
   hero_section: Contentstack.Globals.HeroSection
   open_graph: Contentstack.Globals.OpenGraph
-}
+}>
 
 export default async function getHomePage(): Promise<Core.Result<HomePageData>> {
   const result = await blog.api.find<HomePageData>('page_home', (query) => {

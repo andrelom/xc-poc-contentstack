@@ -14,6 +14,8 @@ declare namespace NodeJS {
   interface ProcessEnv {
     // Node
     readonly NODE_ENV: 'development' | 'production' | 'test'
+    // Logging
+    readonly LOGGING_LEVEL: 'fatal' | 'error' | 'warn' | 'info' | 'debug' | 'trace' | 'silent'
     // Next
     readonly NEXT_PHASE: string | undefined
     readonly NEXT_REVALIDATE: string

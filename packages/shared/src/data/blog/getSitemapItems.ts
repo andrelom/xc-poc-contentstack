@@ -11,7 +11,7 @@ const getPagesEntries = async (type: string) => {
   })
 
   if (!result.error) {
-    logger.error(result, 'Get Sitemap Items')
+    logger.error(result, `Get Sitemap Items: For type "${type}"`)
   }
 
   return result.data ?? []

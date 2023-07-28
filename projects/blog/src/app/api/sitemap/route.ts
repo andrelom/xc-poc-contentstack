@@ -2,6 +2,10 @@ import { NextResponse } from 'next/server'
 import { toSitemapXML } from '@xc/lib/sitemap'
 import getSitemapItems from '@xc/shared/data/blog/getSitemapItems'
 
+export const revalidate = 5
+
+export const dynamic = 'force-static'
+
 export async function GET() {
   const result = await getSitemapItems()
 
@@ -14,7 +18,6 @@ export async function GET() {
   return new NextResponse(xml, {
     headers: {
       [`content-type`]: 'application/xml',
-      [`cache-control`]: 'private, no-cache, no-store, max-age=0, must-revalidate',
     },
   })
 }

@@ -1,5 +1,6 @@
 import type { SitemapItem } from '@xc/lib/sitemap'
 
+import logger from '@xc/lib/logger'
 import { blog } from '@xc/shared/clients/contentstack'
 
 const types = ['page_home', 'page_generic', 'page_posts', 'page_post']
@@ -8,6 +9,10 @@ const getPagesEntries = async (type: string) => {
   const result = await blog.api.find(type, (query) => {
     return query.only(['url', 'updated_at']).toJSON()
   })
+
+  if (!result.error) {
+    logger.error(result, 'Get Sitemap Items')
+  }
 
   return result.data ?? []
 }

@@ -1,5 +1,5 @@
 import { blog } from '@xc/shared/clients/contentstack'
-import GetAllPostsQuery from './queries/GetAllPostsQuery.graphql'
+import GetPostsPageQuery from './queries/GetPostsPageQuery.graphql'
 
 export type PostsPageData = {
   page: {
@@ -24,7 +24,7 @@ export type PostsPageData = {
 
 export default async function getPostsPage(): Promise<Core.Result<PostsPageData>> {
   const response = await blog.gql.query({
-    query: GetAllPostsQuery,
+    query: GetPostsPageQuery,
   })
 
   if (!response || response.error) {
@@ -32,7 +32,7 @@ export default async function getPostsPage(): Promise<Core.Result<PostsPageData>
   }
 
   const item: PostsPageData = {
-    page: response.data.page.items.shift(),
+    page: response.data.page.items[0],
     posts: response.data.posts.items,
   }
 

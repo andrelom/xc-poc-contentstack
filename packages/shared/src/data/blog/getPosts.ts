@@ -1,5 +1,5 @@
 import { blog } from '@xc/shared/clients/contentstack'
-import GetAllPosts from './queries/GetAllPosts.graphql'
+import GetAllPostsQuery from './queries/GetAllPostsQuery.graphql'
 
 export type PostsData = {
   title: string
@@ -11,7 +11,7 @@ export type PostsData = {
 
 export default async function getPosts(): Promise<Core.Result<PostsData>> {
   const response = await blog.gql.query({
-    query: GetAllPosts,
+    query: GetAllPostsQuery,
   })
 
   if (!response || response.error) {

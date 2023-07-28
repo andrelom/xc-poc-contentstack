@@ -6,7 +6,7 @@ const types = ['page_home', 'page_generic', 'page_posts', 'page_post']
 
 const getPagesEntries = async (type: string) => {
   const result = await blog.api.find(type, (query) => {
-    return query.only(['uid', 'url', 'updated_at']).toJSON()
+    return query.only(['url', 'updated_at']).toJSON()
   })
 
   return result.data ?? []

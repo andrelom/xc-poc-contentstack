@@ -1,5 +1,5 @@
 query GetPostsPageQuery {
-  all_page_posts {
+  page: all_page_posts {
     items {
       title
       subtitle
@@ -10,7 +10,7 @@ query GetPostsPageQuery {
       }
     }
   }
-  all_page_post(limit: 5) {
+  posts: all_page_post(limit: 5) {
     items {
       title
       url

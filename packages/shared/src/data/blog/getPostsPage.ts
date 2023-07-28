@@ -3,17 +3,13 @@ import GetAllPostsQuery from './queries/GetAllPostsQuery.graphql'
 
 export type PostsPageData = {
   page: {
-    items: [
-      {
-        title: string
-        subtitle: string
-        description: string
-        open_graph: {
-          og_title: string
-          og_description: string
-        }
-      },
-    ]
+    title: string
+    subtitle: string
+    description: string
+    open_graph: {
+      og_title: string
+      og_description: string
+    }
   }
   posts: {
     items: [
@@ -37,7 +33,10 @@ export default async function getPostsPage(): Promise<Core.Result<PostsPageData>
     return { ok: false, error: 'Not Found' }
   }
 
-  const item: PostsPageData = response.data
+  const item: PostsPageData = {
+    page: response.data.page.items.shift(),
+    posts: response.data.posts.items,
+  }
 
   return { ok: true, data: item }
 }

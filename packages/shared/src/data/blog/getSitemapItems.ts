@@ -10,8 +10,8 @@ const getPagesEntries = async (type: string) => {
     return query.only(['url', 'updated_at']).toJSON()
   })
 
-  if (!result.error) {
-    logger.error(result, `Get Sitemap Items: For type "${type}"`)
+  if (!result.ok) {
+    logger.error(result, `Get Sitemap Items: For type '${type}'`)
   }
 
   return result.data ?? []

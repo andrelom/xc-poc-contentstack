@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import logger from '@xc/lib/logger'
 import { toSitemapXML } from '@xc/lib/sitemap'
 import getSitemapItems from '@xc/shared/data/blog/getSitemapItems'
 import settings from '@/settings'
@@ -15,6 +16,8 @@ export async function GET() {
   }
 
   const xml = toSitemapXML(result.data ?? [])
+
+  logger.info('The Sitemap was generated')
 
   return new NextResponse(xml, {
     headers: {

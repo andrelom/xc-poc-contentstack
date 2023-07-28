@@ -3,8 +3,6 @@ import type { SitemapItem } from '@xc/lib/sitemap'
 import logger from '@xc/lib/logger'
 import { blog } from '@xc/shared/clients/contentstack'
 
-const types = ['page_home', 'page_generic', 'page_posts', 'page_post']
-
 const getPagesEntries = async (type: string) => {
   const result = await blog.api.find(type, (query) => {
     return query.only(['url', 'updated_at']).toJSON()
@@ -27,6 +25,7 @@ const toSitemapItems = (pages: any[]) => {
 export type SitemapItemsData = SitemapItem[]
 
 export default async function getSitemapItems(): Promise<Core.Result<SitemapItemsData>> {
+  const types = process.env.APP_SITEMAP_PAGES?.split(',').map((type) => type.trim()) ?? []
   const pages = await Promise.all(types.map((type) => getPagesEntries(type)))
   const items = pages.map((page) => toSitemapItems(page))
 

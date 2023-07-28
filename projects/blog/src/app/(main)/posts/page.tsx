@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation'
 import createMetadataGenerator from '@xc/lib/createMetadataGenerator'
 import getPostsPage from '@xc/shared/data/blog/getPostsPage'
-import getPosts from '@xc/shared/data/blog/getPosts'
 import settings from '@/settings'
 
 import Link from 'next/link'
@@ -11,7 +10,9 @@ export const revalidate = settings.revalidate
 export const dynamic = 'force-static'
 
 export const generateMetadata = createMetadataGenerator(({ params }) => {
-  return getPostsPage()
+  return getPostsPage().then((result) => {
+    return result.ok ? { ok: true, data: result.data?.page } : { ok: false }
+  })
 })
 
 const toLocaleDateString = (value: string) => {
@@ -26,18 +27,17 @@ const toLocaleDateString = (value: string) => {
 }
 
 export default async function Page({}: Core.Page<{ path: string }>) {
-  const page = await getPostsPage()
-  const posts = await getPosts()
+  const result = await getPostsPage()
 
-  if (!page.ok || !page.data || !posts.ok || !posts.data) {
+  if (!result.ok || !result.data) {
     return notFound()
   }
 
   const data = {
-    title: page.data.title,
-    subtitle: page.data.subtitle,
-    description: page.data.description,
-    posts: posts.data,
+    title: result.data.page.title,
+    subtitle: result.data.page.subtitle,
+    description: result.data.page.description,
+    posts: result.data.posts,
   }
 
   return (

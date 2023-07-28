@@ -32,6 +32,8 @@ declare namespace NodeJS {
     readonly CONTENTSTACK_APP_HOST: string
     readonly CONTENTSTACK_LIVE_PREVIEW: string
     readonly CONTENTSTACK_LIVE_EDIT_TAGS: string
+    // Application
+    readonly APP_SITEMAP_PAGES: string
   }
 }
 

@@ -7,6 +7,8 @@ import HeroSection from '@xc/ui/HeroSection'
 
 export const revalidate = settings.revalidate
 
+export const dynamic = 'force-static'
+
 export const generateMetadata = createMetadataGenerator(() => {
   return getHomePage()
 })

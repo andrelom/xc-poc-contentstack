@@ -11,17 +11,15 @@ export type PostsPageData = {
       og_description: string
     }
   }
-  posts: {
-    items: [
-      {
-        title: string
-        url: string
-        system: {
-          created_at: string
-        }
-      },
-    ]
-  }
+  posts: [
+    {
+      title: string
+      url: string
+      system: {
+        created_at: string
+      }
+    },
+  ]
 }
 
 export default async function getPostsPage(): Promise<Core.Result<PostsPageData>> {

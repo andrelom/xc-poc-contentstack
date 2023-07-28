@@ -1,0 +1,11 @@
+query GetAllPostsQuery {
+  all_page_post {
+    items {
+      title
+      url
+      system {
+        created_at
+      }
+    }
+  }
+}

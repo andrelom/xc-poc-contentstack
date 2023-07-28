@@ -1,5 +1,7 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 
+import logger from '@xc/lib/logger'
+
 export type MetadataGenerator = (
   page: Core.Page,
   parent: ResolvingMetadata,
@@ -16,7 +18,11 @@ export default function createMetadataGenerator(
   return async (page: Core.Page, parent: ResolvingMetadata) => {
     const result = await generator(page, parent)
 
-    if (!result.ok) return {}
+    if (!result.ok) {
+      logger.error(result, 'Metadata Generator')
+
+      return {}
+    }
 
     return {
       title: result.data?.title,

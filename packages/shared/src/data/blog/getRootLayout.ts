@@ -1,3 +1,4 @@
+import logger from '@xc/lib/logger'
 import { blog } from '@xc/shared/clients/contentstack'
 
 export type RootLayoutData = Contentstack.Item<{
@@ -15,6 +16,8 @@ export default async function getRootLayout(): Promise<Core.Result<RootLayoutDat
   })
 
   if (!result.ok) {
+    logger.error(result, 'Get Root Layout')
+
     return { ok: false, error: result.error }
   }
 

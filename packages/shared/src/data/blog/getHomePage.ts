@@ -1,3 +1,4 @@
+import logger from '@xc/lib/logger'
 import { blog } from '@xc/shared/clients/contentstack'
 
 export type HomePageData = Contentstack.Item<{
@@ -11,6 +12,8 @@ export default async function getHomePage(): Promise<Core.Result<HomePageData>> 
   })
 
   if (!result.ok) {
+    logger.error(result, 'Get Home Page')
+
     return { ok: false, error: result.error }
   }
 

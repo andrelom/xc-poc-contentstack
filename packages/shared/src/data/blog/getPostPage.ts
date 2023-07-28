@@ -1,3 +1,4 @@
+import logger from '@xc/lib/logger'
 import { blog } from '@xc/shared/clients/contentstack'
 
 export type PostPageData = Contentstack.Item<{
@@ -12,6 +13,8 @@ export default async function getPostPage({ path }: { path: string }): Promise<C
   })
 
   if (!result.ok) {
+    logger.error(result, 'Get Post Page')
+
     return { ok: false, error: result.error }
   }
 

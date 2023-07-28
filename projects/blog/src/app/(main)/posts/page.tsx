@@ -10,8 +10,8 @@ export const revalidate = settings.revalidate
 export const dynamic = 'force-static'
 
 export const generateMetadata = createMetadataGenerator(() => {
-  return getPostsPage().then((result) => {
-    return !result.ok ? { ok: false } : { ok: true, data: result.data?.page }
+  return getPostsPage().then(({ ok, error, data }) => {
+    return { ok, error, data: data?.page }
   })
 })
 

@@ -1,3 +1,4 @@
+import logger from '@xc/lib/logger'
 import { blog } from '@xc/shared/clients/contentstack'
 
 export type GenericPageData = Contentstack.Item<{
@@ -11,6 +12,8 @@ export default async function getGenericPage({ path }: { path: string }): Promis
   })
 
   if (!result.ok) {
+    logger.error(result, 'Get Generic Page')
+
     return { ok: false, error: result.error }
   }
 

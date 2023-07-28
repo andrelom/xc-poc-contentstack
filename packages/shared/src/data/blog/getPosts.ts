@@ -9,7 +9,7 @@ export type PostData = Contentstack.Item<{
 
 export default async function getPosts(): Promise<Core.Result<PostData[]>> {
   const result = await blog.api.find<PostData>('page_post', (query) => {
-    return query.only(['title', 'url', 'created_at']).toJSON()
+    return query.only(['title', 'url', 'created_at']).limit(10).toJSON()
   })
 
   if (!result.ok) {

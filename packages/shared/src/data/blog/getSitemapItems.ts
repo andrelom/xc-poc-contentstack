@@ -1,31 +1,29 @@
 import type { SitemapItem } from '@xc/lib/sitemap'
 
 import { blog } from '@xc/shared/clients/contentstack'
-import GetSitemapQuery from './queries/GetSitemapQuery.graphql'
 
-const toSitemapItems = ({ items }: { items: any[] }, home: boolean = false) => {
-  return items.map<SitemapItem>((item: any) => ({
-    url: home ? '/' : item.url,
-    date: item.system.updated_at,
+const types = ['page_home', 'page_generic', 'page_posts', 'page_post']
+
+const getPagesByType = async (type: string) => {
+  const result = await blog.api.find(type, (query) => {
+    return query.only(['uid', 'url', 'updated_at']).toJSON()
+  })
+
+  return result.data ?? []
+}
+
+const toSitemapItems = (pages: any[]) => {
+  return pages.map<SitemapItem>((page: any) => ({
+    url: page.url,
+    date: page.updated_at,
   }))
 }
 
 export type SitemapItemsData = SitemapItem[]
 
 export default async function getSitemapItems(): Promise<Core.Result<SitemapItemsData>> {
-  const response = await blog.gql.query({
-    query: GetSitemapQuery,
-  })
+  const pages = await Promise.all(types.map((type) => getPagesByType(type)))
+  const items = pages.map((page) => toSitemapItems(page))
 
-  if (!response || response.error) {
-    return { ok: false, error: 'Not Found' }
-  }
-
-  const list = [
-    toSitemapItems(response.data.all_page_home, true),
-    toSitemapItems(response.data.all_page_generic),
-    toSitemapItems(response.data.all_page_post),
-  ]
-
-  return { ok: true, data: list.flat() }
+  return { ok: true, data: items.flat() }
 }

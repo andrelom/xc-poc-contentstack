@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server'
 import { toSitemapXML } from '@xc/lib/sitemap'
 import getSitemapItems from '@xc/shared/data/blog/getSitemapItems'
+import settings from '@/settings'
 
-export const revalidate = 5
+export const revalidate = settings.revalidate
 
 export const dynamic = 'force-static'
 

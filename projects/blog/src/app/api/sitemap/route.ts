@@ -10,12 +10,12 @@ export const dynamic = 'force-static'
 
 export async function GET() {
   const result = await getSitemapItems()
+  const data = result.data ?? []
+  const xml = toSitemapXML(data)
 
   if (!result.ok) {
-    return NextResponse.json({ ok: false }, { status: 404 })
+    logger.error(result, 'Sitemap API')
   }
-
-  const xml = toSitemapXML(result.data ?? [])
 
   logger.info('The Sitemap was generated')
 

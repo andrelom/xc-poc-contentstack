@@ -1,4 +1,5 @@
 import { Stack, Region, Query } from 'contentstack'
+import logger from '@xc/lib/logger'
 
 export interface Options {
   key: string
@@ -35,7 +36,7 @@ export class Contentstack {
     } catch (error) {
       const traceId = crypto.randomUUID()
 
-      console.log(`Trace ID: ${traceId}`, error)
+      logger.error(error, `Contentstack: Trace ID '${traceId}'`)
 
       return { ok: false, error: 'Unexpected Error', metadata: { traceId } }
     }

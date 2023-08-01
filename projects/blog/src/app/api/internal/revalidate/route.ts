@@ -16,13 +16,13 @@ export async function POST(request: Request) {
 
   if (!result.ok) {
     logger.error(result, 'Internal API: Revalidate')
+  } else {
+    logger.info('Internal API: Triggered static content regeneration')
   }
 
   for (const item of items) {
     revalidatePath(item.url)
   }
-
-  logger.info('Internal API: Triggered static content regeneration')
 
   return NextResponse.json(Result.success())
 }

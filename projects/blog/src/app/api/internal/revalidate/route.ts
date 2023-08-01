@@ -6,7 +6,7 @@ import getSitemapItems from '@xc/shared/data/blog/getSitemapItems'
 export async function POST(request: Request) {
   const token = request.headers.get('x-api-token')
 
-  if (token !== process.env.APP_API_TOKEN) {
+  if (process.env.APP_API_TOKEN !== token) {
     return NextResponse.json({ ok: false }, { status: 401 })
   }
 

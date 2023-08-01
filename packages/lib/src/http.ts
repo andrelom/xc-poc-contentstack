@@ -6,7 +6,7 @@ export type HTTPClientRequestOptions = {
 
 export class HTTPClient {
   async get<T = any>(url: URL, options?: HTTPClientRequestOptions): Promise<Result<T>> {
-    return this.toResult<T>(
+    return this.parse<T>(
       await fetch(url, {
         method: 'GET',
       }),
@@ -14,7 +14,7 @@ export class HTTPClient {
   }
 
   async post<T = any>(url: URL, data: any, options?: HTTPClientRequestOptions): Promise<Result<T>> {
-    return this.toResult<T>(
+    return this.parse<T>(
       await fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
@@ -23,7 +23,7 @@ export class HTTPClient {
   }
 
   async put<T = any>(url: URL, data: any, options?: HTTPClientRequestOptions): Promise<Result<T>> {
-    return this.toResult<T>(
+    return this.parse<T>(
       await fetch(url, {
         method: 'PUT',
         body: JSON.stringify(data),
@@ -32,7 +32,7 @@ export class HTTPClient {
   }
 
   async delete<T = any>(url: URL, options?: HTTPClientRequestOptions): Promise<Result<T>> {
-    return this.toResult<T>(
+    return this.parse<T>(
       await fetch(url, {
         method: 'DELETE',
         body: JSON.stringify({}),
@@ -40,21 +40,17 @@ export class HTTPClient {
     )
   }
 
-  protected parse(value: string) {
-    if (!value) {
-      return { ok: true }
-    }
-
+  private async parse<T = any>(response: Response) {
     try {
-      return { ok: true, value: JSON.parse(value) }
-    } catch {
-      return { ok: false, value: 'Invalid JSON Input' }
+      return await this.toResult<T>(response)
+    } catch (error) {
+      return Result.fail<T>('Woops', { message: error })
     }
   }
 
-  async toResult<T = any>(response: Response): Promise<Result<T>> {
+  private async toResult<T = any>(response: Response) {
     const text = await response.text()
-    const parsed = this.parse(text)
+    const parsed = this.toJSON(text)
 
     if (response.ok && parsed.ok && Result.is(parsed.value)) {
       return Result.from<T>(parsed.value)
@@ -79,6 +75,18 @@ export class HTTPClient {
     }
 
     return result
+  }
+
+  private toJSON(value: string) {
+    if (!value) {
+      return { ok: true }
+    }
+
+    try {
+      return { ok: true, value: JSON.parse(value) }
+    } catch {
+      return { ok: false, value: 'Invalid JSON Input' }
+    }
   }
 }
 

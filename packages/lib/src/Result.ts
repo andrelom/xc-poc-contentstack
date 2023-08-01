@@ -8,6 +8,10 @@ export default class Result<T = any> {
   error?: string
   metadata?: Record<string, any>
 
+  static is(source: any): boolean {
+    return source !== null && typeof source === 'object' && source.hasOwnProperty('ok')
+  }
+
   static success<T>(data?: T): Result<T> {
     const result = new Result<T>(true)
 

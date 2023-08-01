@@ -1,53 +1,45 @@
 import Result from '@xc/lib/Result'
 
-export type HTTPClientOptions = {
-  cache?: RequestCache
-  next?: NextFetchRequestConfig
-  headers?: Record<string, string>
-}
+export type HTTPClientOptions = Omit<RequestInit, 'method' | 'body'> & {}
 
 export class HTTPClient {
-  async get<T = any>(url: URL, options?: HTTPClientOptions): Promise<Result<T>> {
+  async get<T = any>(url: URL, options: HTTPClientOptions = {}): Promise<Result<T>> {
     return this.toResult<T>(
       await fetch(url, {
+        ...options,
         method: 'GET',
-        cache: options?.cache,
-        next: options?.next,
         headers: this.headers(options),
       }),
     )
   }
 
-  async post<T = any>(url: URL, data: any, options?: HTTPClientOptions): Promise<Result<T>> {
+  async post<T = any>(url: URL, data: any, options: HTTPClientOptions = {}): Promise<Result<T>> {
     return this.toResult<T>(
       await fetch(url, {
+        ...options,
         method: 'POST',
-        cache: options?.cache,
-        next: options?.next,
         body: JSON.stringify(data),
         headers: this.headers(options),
       }),
     )
   }
 
-  async put<T = any>(url: URL, data: any, options?: HTTPClientOptions): Promise<Result<T>> {
+  async put<T = any>(url: URL, data: any, options: HTTPClientOptions = {}): Promise<Result<T>> {
     return this.toResult<T>(
       await fetch(url, {
+        ...options,
         method: 'PUT',
-        cache: options?.cache,
-        next: options?.next,
         body: JSON.stringify(data),
         headers: this.headers(options),
       }),
     )
   }
 
-  async delete<T = any>(url: URL, options?: HTTPClientOptions): Promise<Result<T>> {
+  async delete<T = any>(url: URL, options: HTTPClientOptions = {}): Promise<Result<T>> {
     return this.toResult<T>(
       await fetch(url, {
+        ...options,
         method: 'DELETE',
-        cache: options?.cache,
-        next: options?.next,
         body: JSON.stringify({}),
         headers: this.headers(options),
       }),

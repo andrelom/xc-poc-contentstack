@@ -68,10 +68,8 @@ export class HTTPClient {
 
     if (Result.is(parsed.value)) {
       result = Result.from<T>(parsed.value)
-    } else if (!parsed.ok) {
-      result = Result.fail('Woops', { message: parsed.value })
     } else {
-      result = Result.fail('Woops', { message: text })
+      result = Result.fail('Woops', { message: !parsed.ok ? parsed.value : text })
     }
 
     if (result.metadata) {

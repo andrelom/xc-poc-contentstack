@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     revalidatePath(item.url)
   }
 
-  logger.info('Internal API: Static content was revalidated')
+  logger.info('Internal API: Triggered static content regeneration')
 
   return NextResponse.json(Result.success())
 }

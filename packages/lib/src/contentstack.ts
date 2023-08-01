@@ -1,4 +1,5 @@
 import { Stack, Region, Query } from 'contentstack'
+import Result from '@xc/lib/Result'
 import logger from '@xc/lib/logger'
 
 export type Options = {
@@ -26,19 +27,19 @@ export class Contentstack {
   async find<T = Record<string, any>>(
     type: string,
     builder: (query: Query) => Query,
-  ): Promise<Core.Result<Contentstack.Item<T>[]>> {
+  ): Promise<Result<Contentstack.Item<T>[]>> {
     try {
       const stack = this.stack.ContentType(type).Query()
       const query = builder(stack)
       const items = await query.find()
 
-      return { ok: true, data: items.flat() }
+      return Result.success(items.flat())
     } catch (error) {
       const traceId = crypto.randomUUID()
 
       logger.error(error, `Contentstack: Trace ID '${traceId}'`)
 
-      return { ok: false, error: 'Unexpected Error', metadata: { traceId } }
+      return Result.fail('Woops', { traceId })
     }
   }
 

@@ -15,7 +15,7 @@ export function createApolloClient(options: {
   const link = new HttpLink({ uri })
 
   options.headers = options.headers ?? {}
-  options.cache = options.cache ?? new InMemoryCache()
+  options.cache = options.cache ?? new InMemoryCache({ resultCacheMaxSize: 0 })
 
   const middleware = new ApolloLink((operation, forward) => {
     operation.setContext(({ headers = {} }) => ({

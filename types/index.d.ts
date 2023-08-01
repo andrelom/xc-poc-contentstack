@@ -33,7 +33,7 @@ declare namespace NodeJS {
     readonly CONTENTSTACK_LIVE_PREVIEW: string
     readonly CONTENTSTACK_LIVE_EDIT_TAGS: string
     // Application
-    readonly APP_SITEMAP_PAGE_TYPES: string
+    readonly APP_PAGE_TYPES: string
   }
 }
 

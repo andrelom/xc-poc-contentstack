@@ -132,3 +132,7 @@ export function createURL(
 
   return url
 }
+
+const http = new HTTPClient()
+
+export default http

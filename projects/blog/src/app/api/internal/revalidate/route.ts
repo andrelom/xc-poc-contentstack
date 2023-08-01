@@ -3,7 +3,13 @@ import { revalidatePath } from 'next/cache'
 import logger from '@xc/lib/logger'
 import getSitemapItems from '@xc/shared/data/blog/getSitemapItems'
 
-export async function POST() {
+export async function POST(request: Request) {
+  const token = request.headers.get('x-internal-api-token')
+
+  if (token !== process.env.APP_INTERNAL_API_TOKEN) {
+    return NextResponse.json({ ok: false }, { status: 401 })
+  }
+
   const result = await getSitemapItems()
   const items = result.data ?? []
 

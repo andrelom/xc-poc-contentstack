@@ -17,7 +17,7 @@ export async function GET() {
     logger.error(result, 'Internal API: Sitemap')
   }
 
-  logger.info('Internal API: The Sitemap was generated')
+  logger.info('Internal API: The sitemap was generated')
 
   return new NextResponse(xml, {
     headers: {

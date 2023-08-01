@@ -81,7 +81,7 @@ export class HTTPClient {
     const parsed = await this.parse(response)
 
     if (response.ok && parsed.ok && Result.is(parsed.value)) {
-      return Result.from<T>(parsed.value)
+      return Result.from<T>(parsed.value, true)
     }
 
     if (response.ok && parsed.ok) {

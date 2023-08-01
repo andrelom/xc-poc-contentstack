@@ -25,7 +25,7 @@ const toSitemapItems = (pages: any[]) => {
 }
 
 export default async function getSitemapItems(): Promise<Core.Result<SitemapItemsData>> {
-  const types = process.env.APP_SITEMAP_PAGE_TYPES?.split(',').map((type) => type.trim()) ?? []
+  const types = process.env.APP_PAGE_TYPES?.split(',').map((type) => type.trim()) ?? []
   const pages = await Promise.all(types.map((type) => getPagesEntries(type)))
   const items = pages.map((page) => toSitemapItems(page))
 

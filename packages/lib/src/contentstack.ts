@@ -23,6 +23,10 @@ export class Contentstack {
     this.stack = this.create()
   }
 
+  raw() {
+    return this.stack
+  }
+
   async find<T = Record<string, any>>(
     type: string,
     builder: (query: Query) => Query,

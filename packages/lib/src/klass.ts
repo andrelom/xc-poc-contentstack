@@ -2,7 +2,7 @@ export type Klass = string | [string, boolean]
 
 export default function klass(css: { readonly [key: string]: string }) {
   return (...entries: Klass[]) => {
-    return entries.reduce((result, entry) => {
+    return entries.reduce<string>((result, entry) => {
       if (typeof entry === 'string') {
         return `${result} ${css[entry]}`
       }

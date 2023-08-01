@@ -4,9 +4,9 @@ import logger from '@xc/lib/logger'
 import getSitemapItems from '@xc/shared/data/blog/getSitemapItems'
 
 export async function POST(request: Request) {
-  const token = request.headers.get('x-internal-api-token')
+  const token = request.headers.get('x-api-token')
 
-  if (token !== process.env.APP_INTERNAL_API_TOKEN) {
+  if (token !== process.env.APP_API_TOKEN) {
     return NextResponse.json({ ok: false }, { status: 401 })
   }
 

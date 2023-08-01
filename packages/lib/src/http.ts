@@ -1,11 +1,11 @@
 import Result from '@xc/lib/Result'
 
-export type RequestOptions = {
+export type HTTPClientOptions = {
   headers?: Record<string, string>
 }
 
 export class HTTPClient {
-  async get<T = any>(url: URL, options?: RequestOptions): Promise<Result<T>> {
+  async get<T = any>(url: URL, options?: HTTPClientOptions): Promise<Result<T>> {
     return this.toResult<T>(
       await fetch(url, {
         method: 'GET',
@@ -14,7 +14,7 @@ export class HTTPClient {
     )
   }
 
-  async post<T = any>(url: URL, data: any, options?: RequestOptions): Promise<Result<T>> {
+  async post<T = any>(url: URL, data: any, options?: HTTPClientOptions): Promise<Result<T>> {
     return this.toResult<T>(
       await fetch(url, {
         method: 'POST',
@@ -24,7 +24,7 @@ export class HTTPClient {
     )
   }
 
-  async put<T = any>(url: URL, data: any, options?: RequestOptions): Promise<Result<T>> {
+  async put<T = any>(url: URL, data: any, options?: HTTPClientOptions): Promise<Result<T>> {
     return this.toResult<T>(
       await fetch(url, {
         method: 'PUT',
@@ -34,7 +34,7 @@ export class HTTPClient {
     )
   }
 
-  async delete<T = any>(url: URL, options?: RequestOptions): Promise<Result<T>> {
+  async delete<T = any>(url: URL, options?: HTTPClientOptions): Promise<Result<T>> {
     return this.toResult<T>(
       await fetch(url, {
         method: 'DELETE',
@@ -44,7 +44,7 @@ export class HTTPClient {
     )
   }
 
-  private headers(options?: RequestOptions) {
+  private headers(options?: HTTPClientOptions) {
     const headers: Record<string, string> = {
       [`content-type`]: 'application/json',
     }

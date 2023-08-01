@@ -1,20 +1,20 @@
 import Result from '@xc/lib/Result'
 
-export type HTTPClientRequestOptions = {
+export type RequestOptions = {
   headers?: Record<string, string>
 }
 
 export class HTTPClient {
-  async get<T = any>(url: URL, options?: HTTPClientRequestOptions): Promise<Result<T>> {
-    return this.parse<T>(
+  async get<T = any>(url: URL, options?: RequestOptions): Promise<Result<T>> {
+    return this.toResult<T>(
       await fetch(url, {
         method: 'GET',
       }),
     )
   }
 
-  async post<T = any>(url: URL, data: any, options?: HTTPClientRequestOptions): Promise<Result<T>> {
-    return this.parse<T>(
+  async post<T = any>(url: URL, data: any, options?: RequestOptions): Promise<Result<T>> {
+    return this.toResult<T>(
       await fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
@@ -22,8 +22,8 @@ export class HTTPClient {
     )
   }
 
-  async put<T = any>(url: URL, data: any, options?: HTTPClientRequestOptions): Promise<Result<T>> {
-    return this.parse<T>(
+  async put<T = any>(url: URL, data: any, options?: RequestOptions): Promise<Result<T>> {
+    return this.toResult<T>(
       await fetch(url, {
         method: 'PUT',
         body: JSON.stringify(data),
@@ -31,8 +31,8 @@ export class HTTPClient {
     )
   }
 
-  async delete<T = any>(url: URL, options?: HTTPClientRequestOptions): Promise<Result<T>> {
-    return this.parse<T>(
+  async delete<T = any>(url: URL, options?: RequestOptions): Promise<Result<T>> {
+    return this.toResult<T>(
       await fetch(url, {
         method: 'DELETE',
         body: JSON.stringify({}),
@@ -40,17 +40,27 @@ export class HTTPClient {
     )
   }
 
-  private async parse<T = any>(response: Response) {
+  private async parse(response: Response) {
+    const text = await response.text()
+    const type = response.headers.get('content-type')?.toLowerCase()
+
+    if (!text) {
+      return { ok: true }
+    }
+
+    if (type !== 'application/json') {
+      return { ok: true, value: text }
+    }
+
     try {
-      return await this.toResult<T>(response)
-    } catch (error) {
-      return Result.fail<T>('Woops', { message: error })
+      return { ok: true, value: JSON.parse(text) }
+    } catch {
+      return { ok: false, value: 'Invalid JSON Input' }
     }
   }
 
   private async toResult<T = any>(response: Response) {
-    const text = await response.text()
-    const parsed = this.toJSON(text)
+    const parsed = await this.parse(response)
 
     if (response.ok && parsed.ok && Result.is(parsed.value)) {
       return Result.from<T>(parsed.value)
@@ -65,7 +75,7 @@ export class HTTPClient {
     if (Result.is(parsed.value)) {
       result = Result.from<T>(parsed.value)
     } else {
-      result = Result.fail('Woops', { message: !parsed.ok ? parsed.value : text })
+      result = Result.fail('Woops', { message: parsed.value })
     }
 
     if (result.metadata) {
@@ -75,18 +85,6 @@ export class HTTPClient {
     }
 
     return result
-  }
-
-  private toJSON(value: string) {
-    if (!value) {
-      return { ok: true }
-    }
-
-    try {
-      return { ok: true, value: JSON.parse(value) }
-    } catch {
-      return { ok: false, value: 'Invalid JSON Input' }
-    }
   }
 }
 

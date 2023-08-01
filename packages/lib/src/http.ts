@@ -1,6 +1,8 @@
 import Result from '@xc/lib/Result'
 
 export type HTTPClientOptions = {
+  cache?: RequestCache
+  next?: NextFetchRequestConfig
   headers?: Record<string, string>
 }
 
@@ -9,6 +11,8 @@ export class HTTPClient {
     return this.toResult<T>(
       await fetch(url, {
         method: 'GET',
+        cache: options?.cache,
+        next: options?.next,
         headers: this.headers(options),
       }),
     )
@@ -18,6 +22,8 @@ export class HTTPClient {
     return this.toResult<T>(
       await fetch(url, {
         method: 'POST',
+        cache: options?.cache,
+        next: options?.next,
         body: JSON.stringify(data),
         headers: this.headers(options),
       }),
@@ -28,6 +34,8 @@ export class HTTPClient {
     return this.toResult<T>(
       await fetch(url, {
         method: 'PUT',
+        cache: options?.cache,
+        next: options?.next,
         body: JSON.stringify(data),
         headers: this.headers(options),
       }),
@@ -38,6 +46,8 @@ export class HTTPClient {
     return this.toResult<T>(
       await fetch(url, {
         method: 'DELETE',
+        cache: options?.cache,
+        next: options?.next,
         body: JSON.stringify({}),
         headers: this.headers(options),
       }),

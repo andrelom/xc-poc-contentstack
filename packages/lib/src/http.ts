@@ -13,7 +13,7 @@ export class HTTPClient {
     )
   }
 
-  async post<T = any>(url: URL, data: any = {}, options?: ResquestOptions): Promise<Result<T>> {
+  async post<T = any>(url: URL, data: any, options?: ResquestOptions): Promise<Result<T>> {
     return this.toResult<T>(
       await fetch(url, {
         method: 'POST',

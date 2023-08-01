@@ -1,11 +1,11 @@
 import Result from '@xc/lib/Result'
 
-export type ResquestOptions = {
+export type HTTPClientRequestOptions = {
   headers?: Record<string, string>
 }
 
 export class HTTPClient {
-  async get<T = any>(url: URL, options?: ResquestOptions): Promise<Result<T>> {
+  async get<T = any>(url: URL, options?: HTTPClientRequestOptions): Promise<Result<T>> {
     return this.toResult<T>(
       await fetch(url, {
         method: 'GET',
@@ -13,7 +13,7 @@ export class HTTPClient {
     )
   }
 
-  async post<T = any>(url: URL, data: any, options?: ResquestOptions): Promise<Result<T>> {
+  async post<T = any>(url: URL, data: any, options?: HTTPClientRequestOptions): Promise<Result<T>> {
     return this.toResult<T>(
       await fetch(url, {
         method: 'POST',
@@ -22,7 +22,7 @@ export class HTTPClient {
     )
   }
 
-  async put<T = any>(url: URL, data: any, options?: ResquestOptions): Promise<Result<T>> {
+  async put<T = any>(url: URL, data: any, options?: HTTPClientRequestOptions): Promise<Result<T>> {
     return this.toResult<T>(
       await fetch(url, {
         method: 'PUT',
@@ -31,7 +31,7 @@ export class HTTPClient {
     )
   }
 
-  async delete<T = any>(url: URL, options?: ResquestOptions): Promise<Result<T>> {
+  async delete<T = any>(url: URL, options?: HTTPClientRequestOptions): Promise<Result<T>> {
     return this.toResult<T>(
       await fetch(url, {
         method: 'DELETE',

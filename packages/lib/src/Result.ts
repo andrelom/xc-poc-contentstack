@@ -29,10 +29,13 @@ export default class Result<T = any> {
     return result
   }
 
-  static from<T>(source: Record<string, any>): Result<T> {
+  static from<T>(source: Record<string, any>, data: boolean = false): Result<T> {
     const result = new Result<T>(source.ok)
 
-    result.data = source.data
+    if (data) {
+      result.data = source.data
+    }
+
     result.error = source.error
     result.metadata = source.metadata
 

@@ -9,6 +9,7 @@ export class HTTPClient {
     return this.toResult<T>(
       await fetch(url, {
         method: 'GET',
+        headers: this.headers(options),
       }),
     )
   }
@@ -18,6 +19,7 @@ export class HTTPClient {
       await fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
+        headers: this.headers(options),
       }),
     )
   }
@@ -27,6 +29,7 @@ export class HTTPClient {
       await fetch(url, {
         method: 'PUT',
         body: JSON.stringify(data),
+        headers: this.headers(options),
       }),
     )
   }
@@ -36,8 +39,23 @@ export class HTTPClient {
       await fetch(url, {
         method: 'DELETE',
         body: JSON.stringify({}),
+        headers: this.headers(options),
       }),
     )
+  }
+
+  private headers(options?: RequestOptions) {
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+    }
+
+    if (options?.headers) {
+      for (const [key, value] of Object.entries(options.headers)) {
+        headers[key] = value
+      }
+    }
+
+    return headers
   }
 
   private async parse(response: Response) {

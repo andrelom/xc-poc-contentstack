@@ -15,14 +15,14 @@ export async function POST(request: Request) {
   const items = result.data ?? []
 
   if (!result.ok) {
-    logger.error(result, 'API (Internal): Revalidate')
+    logger.error(result, 'Internal API: Revalidate')
   }
 
   for (const item of items) {
     revalidatePath(item.url)
   }
 
-  logger.info('API (Internal): Static content was revalidated')
+  logger.info('Internal API: Static content was revalidated')
 
   return NextResponse.json(Result.success())
 }

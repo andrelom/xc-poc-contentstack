@@ -1,4 +1,5 @@
 import type { Metadata, ResolvingMetadata } from 'next'
+import type Result from '@xc/lib/Result'
 
 import logger from '@xc/lib/logger'
 
@@ -6,7 +7,7 @@ export type MetadataGenerator = (
   page: Core.Page,
   parent: ResolvingMetadata,
 ) => Promise<
-  Core.Result<{
+  Result<{
     title?: string
     open_graph?: Contentstack.Globals.OpenGraph
   }>

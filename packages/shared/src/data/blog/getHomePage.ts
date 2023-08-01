@@ -1,4 +1,4 @@
-import logger from '@xc/lib/logger'
+import Result from '@xc/lib/Result'
 import { blog } from '@xc/shared/clients/contentstack'
 
 export type HomePageData = Contentstack.Item<{
@@ -6,22 +6,20 @@ export type HomePageData = Contentstack.Item<{
   open_graph: Contentstack.Globals.OpenGraph
 }>
 
-export default async function getHomePage(): Promise<Core.Result<HomePageData>> {
+export default async function getHomePage(): Promise<Result<HomePageData>> {
   const result = await blog.api.find<HomePageData>('page_home', (query) => {
     return query.toJSON()
   })
 
   if (!result.ok) {
-    logger.error(result, 'Get Home Page')
-
-    return { ok: false, error: result.error }
+    return Result.from(result)
   }
 
   const item = result.data?.shift()
 
   if (!item) {
-    return { ok: false, error: 'Not Found' }
+    return Result.fail('Not Found')
   }
 
-  return { ok: true, data: item }
+  return Result.success(item)
 }

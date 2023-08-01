@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache'
+import Result from '@xc/lib/Result'
 import logger from '@xc/lib/logger'
 import getSitemapItems from '@xc/shared/data/blog/getSitemapItems'
 
@@ -7,7 +8,7 @@ export async function POST(request: Request) {
   const token = request.headers.get('x-webhook-token')
 
   if (process.env.APP_WEBHOOK_TOKEN !== token) {
-    return NextResponse.json({ ok: false }, { status: 401 })
+    return NextResponse.json(Result.fail('Unauthorized'), { status: 401 })
   }
 
   const result = await getSitemapItems()
@@ -23,5 +24,5 @@ export async function POST(request: Request) {
 
   logger.info('API (Internal): Static content was revalidated')
 
-  return NextResponse.json({ ok: true })
+  return NextResponse.json(Result.success())
 }

@@ -1,5 +1,6 @@
 import type { SitemapItem } from '@xc/lib/sitemap'
 
+import Result from '@xc/lib/Result'
 import logger from '@xc/lib/logger'
 import { blog } from '@xc/shared/clients/contentstack'
 
@@ -24,10 +25,10 @@ const toSitemapItems = (pages: any[]) => {
   }))
 }
 
-export default async function getSitemapItems(): Promise<Core.Result<SitemapItemsData>> {
+export default async function getSitemapItems(): Promise<Result<SitemapItemsData>> {
   const types = process.env.APP_PAGE_TYPES?.split(',').map((type) => type.trim()) ?? []
   const pages = await Promise.all(types.map((type) => getPagesEntries(type)))
   const items = pages.map((page) => toSitemapItems(page))
 
-  return { ok: true, data: items.flat() }
+  return Result.success(items.flat())
 }

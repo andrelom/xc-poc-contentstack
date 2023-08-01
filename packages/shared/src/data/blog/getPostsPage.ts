@@ -1,5 +1,4 @@
 import Result from '@xc/lib/Result'
-import logger from '@xc/lib/logger'
 import { blog } from '@xc/shared/clients/contentstack'
 import GetPostsPageQuery from './queries/GetPostsPageQuery.graphql'
 
@@ -30,8 +29,6 @@ export default async function getPostsPage(): Promise<Result<PostsPageData>> {
   })
 
   if (!response || response.error) {
-    logger.error(response, 'Get Posts Page')
-
     return Result.fail('Not Found')
   }
 

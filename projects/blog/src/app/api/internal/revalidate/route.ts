@@ -5,13 +5,13 @@ import getSitemapItems from '@xc/shared/data/blog/getSitemapItems'
 
 export async function POST() {
   const result = await getSitemapItems()
-  const data = result.data ?? []
+  const items = result.data ?? []
 
   if (!result.ok) {
     logger.error(result, 'API (Internal): Revalidate')
   }
 
-  for (const item of data) {
+  for (const item of items) {
     revalidatePath(item.url)
   }
 

@@ -3,7 +3,7 @@ import { revalidatePath } from 'next/cache'
 import logger from '@xc/lib/logger'
 import getSitemapItems from '@xc/shared/data/blog/getSitemapItems'
 
-export async function POST() {
+export async function GET() {
   const result = await getSitemapItems()
   const data = result.data ?? []
 

@@ -1,7 +1,7 @@
 import { Stack, Region, Query } from 'contentstack'
 import logger from '@xc/lib/logger'
 
-export interface Options {
+export type Options = {
   key: string
   token: string
   environment: string

@@ -29,12 +29,21 @@ export default class Result<T = any> {
     return result
   }
 
-  static from<T>(source: Record<string, any>): Result<T> {
+  static forward<T>(source: Result): Result<T> {
     const result = new Result<T>(source.ok)
 
-    result.data = source.data
     result.error = source.error
     result.metadata = source.metadata
+
+    return result
+  }
+
+  static from<T>(record: Record<string, any>): Result<T> {
+    const result = new Result<T>(record.ok)
+
+    result.data = record.data
+    result.error = record.error
+    result.metadata = record.metadata
 
     return result
   }

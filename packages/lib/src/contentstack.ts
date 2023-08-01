@@ -37,7 +37,7 @@ export class Contentstack {
     } catch (error) {
       const traceId = crypto.randomUUID()
 
-      logger.error(error, `Contentstack query for type '${type}' (Trace ID '${traceId}')`)
+      logger.error(error, `Contentstack (Trace ID '${traceId}'): Query for type '${type}'`)
 
       return Result.fail('Woops', { traceId })
     }

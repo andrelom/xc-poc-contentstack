@@ -46,7 +46,7 @@ export class HTTPClient {
 
   private headers(options?: RequestOptions) {
     const headers: Record<string, string> = {
-      'Content-Type': 'application/json',
+      [`content-type`]: 'application/json',
     }
 
     if (options?.headers) {

@@ -10,8 +10,8 @@ export const dynamic = 'force-static'
 
 export async function GET() {
   const result = await getSitemapItems()
-  const data = result.data ?? []
-  const xml = toSitemapXML(data)
+  const items = result.data ?? []
+  const xml = toSitemapXML(items)
 
   if (!result.ok) {
     logger.error(result, 'API (Internal): Sitemap')

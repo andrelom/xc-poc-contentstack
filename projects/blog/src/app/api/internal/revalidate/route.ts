@@ -4,9 +4,9 @@ import logger from '@xc/lib/logger'
 import getSitemapItems from '@xc/shared/data/blog/getSitemapItems'
 
 export async function POST(request: Request) {
-  const token = request.headers.get('x-api-token')
+  const token = request.headers.get('x-webhook-token')
 
-  if (process.env.APP_API_TOKEN !== token) {
+  if (process.env.APP_WEBHOOK_TOKEN !== token) {
     return NextResponse.json({ ok: false }, { status: 401 })
   }
 

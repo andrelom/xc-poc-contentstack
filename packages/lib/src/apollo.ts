@@ -16,7 +16,7 @@ export function createApolloClient(options: {
 }) {
   const uri = options.url.toString()
 
-  let client: ApolloClient<any> | null = clients[uri]
+  let client: ApolloClient<any> | undefined = clients[uri]
 
   if (client && !ssr) return client
 

@@ -13,7 +13,7 @@ export default function ModularBlocks({
 }) {
   return useMemo(() => {
     return Object.entries(components).reduce<JSX.Element[]>((children, [name, Component]) => {
-      const entry = entries.find((entry) => name in entry)
+      const entry = entries.find((entry) => entry[name])
 
       if (entry) {
         children.push(<Component data={entry[name]} />)

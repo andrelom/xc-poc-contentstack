@@ -2,6 +2,9 @@ import type { ApolloCache, NormalizedCacheObject } from '@apollo/client'
 
 import { ApolloClient, ApolloLink, HttpLink, InMemoryCache, concat } from '@apollo/client'
 
+const ssr = typeof window === 'undefined'
+const clients: Record<string, ApolloClient<any>> = {}
+
 // This function retrieves an Apollo Client or generates a new one. However, it is
 // important to note that it will consistently return a fresh client if executed
 // on the server side (when the 'window' object is undefined). Conversely, it will
@@ -12,7 +15,10 @@ export function createApolloClient(options: {
   cache?: ApolloCache<NormalizedCacheObject>
 }) {
   const uri = options.url.toString()
-  const link = new HttpLink({ uri })
+
+  let client: ApolloClient<any> | null = clients[uri]
+
+  if (client && !ssr) return client
 
   options.headers = options.headers ?? {}
 
@@ -28,9 +34,11 @@ export function createApolloClient(options: {
     return forward(operation)
   })
 
-  return new ApolloClient({
-    ssrMode: true,
-    link: concat(middleware, link),
+  client = clients[uri] = new ApolloClient({
+    ssrMode: ssr,
+    link: concat(middleware, new HttpLink({ uri })),
     cache: options.cache,
   })
+
+  return client
 }

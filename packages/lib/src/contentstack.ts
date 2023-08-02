@@ -2,7 +2,7 @@ import { Stack, Region, Query } from 'contentstack'
 import Result from '@xc/lib/Result'
 import logger from '@xc/lib/logger'
 
-export type Options = {
+export type ContentstackOptions = {
   key: string
   token: string
   environment: string
@@ -16,10 +16,10 @@ export type Options = {
 }
 
 export class Contentstack {
-  private options: Options
+  private options: ContentstackOptions
   private stack: Stack
 
-  constructor(options: Options) {
+  constructor(options: ContentstackOptions) {
     this.options = options
     this.stack = this.create()
   }
@@ -63,6 +63,6 @@ export class Contentstack {
   }
 }
 
-export function createContentstackClient(options: Options) {
+export function createContentstackClient(options: ContentstackOptions) {
   return new Contentstack(options)
 }

@@ -19,17 +19,17 @@ export default function createMetadataGenerator(
   return async (page: Core.Page, parent: ResolvingMetadata) => {
     const result = await generator(page, parent)
 
-    if (!result.ok) {
+    if (!result.ok || !result.data) {
       logger.error(result, 'Metadata Generator')
 
       return {}
     }
 
     return {
-      title: result.data?.title,
+      title: result.data.title,
       openGraph: {
-        title: result.data?.open_graph?.og_title,
-        description: result.data?.open_graph?.og_description,
+        title: result.data.open_graph?.og_title,
+        description: result.data.open_graph?.og_description,
       },
     }
   }

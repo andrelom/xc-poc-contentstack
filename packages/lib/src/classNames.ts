@@ -3,11 +3,10 @@ export type CSSClassName = string | [string, boolean]
 export default function classNames(...entries: CSSClassName[]) {
   return entries.reduce<string>((result, entry) => {
     if (typeof entry === 'string') {
-      return `${result} ${entry}`
+      return entry ? `${result} ${entry}` : result
     }
 
-    const name = entry[0]
-    const show = entry[1]
+    const [name, show] = entry
 
     return show ? `${result} ${name}` : result
   }, '')

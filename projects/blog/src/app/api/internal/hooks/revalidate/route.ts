@@ -20,8 +20,6 @@ export async function POST(request: Request) {
     logger.info('Internal API: Triggered static content regeneration')
   }
 
-  logger.info(await request.json(), 'Webhook')
-
   for (const item of items) {
     revalidatePath(item.url)
   }

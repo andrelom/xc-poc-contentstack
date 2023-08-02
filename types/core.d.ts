@@ -6,13 +6,6 @@
 // Core
 
 declare namespace Core {
-  type Result<T = any> = {
-    ok: boolean
-    error?: string
-    data?: T
-    metadata?: any
-  }
-
   type Layout<T = any> = {
     params: T
     children: React.ReactNode

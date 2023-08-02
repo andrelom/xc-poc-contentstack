@@ -1,4 +1,4 @@
-import logger from '@xc/lib/logger'
+import Result from '@xc/lib/Result'
 import { blog } from '@xc/shared/clients/contentstack'
 
 export type RootLayoutData = Contentstack.Item<{
@@ -10,22 +10,20 @@ export type RootLayoutData = Contentstack.Item<{
   }[]
 }>
 
-export default async function getRootLayout(): Promise<Core.Result<RootLayoutData>> {
+export default async function getRootLayout(): Promise<Result<RootLayoutData>> {
   const result = await blog.api.find<RootLayoutData>('layout_root', (query) => {
     return query.toJSON()
   })
 
   if (!result.ok) {
-    logger.error(result, 'Get Root Layout')
-
-    return { ok: false, error: result.error }
+    return Result.from(result)
   }
 
   const item = result.data?.shift()
 
   if (!item) {
-    return { ok: false, error: 'Not Found' }
+    return Result.fail('Not Found')
   }
 
-  return { ok: true, data: item }
+  return Result.success(item)
 }

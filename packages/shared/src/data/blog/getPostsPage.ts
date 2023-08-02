@@ -1,4 +1,4 @@
-import logger from '@xc/lib/logger'
+import Result from '@xc/lib/Result'
 import { blog } from '@xc/shared/clients/contentstack'
 import GetPostsPageQuery from './queries/GetPostsPageQuery.graphql'
 
@@ -23,15 +23,13 @@ export type PostsPageData = {
   ]
 }
 
-export default async function getPostsPage(): Promise<Core.Result<PostsPageData>> {
+export default async function getPostsPage(): Promise<Result<PostsPageData>> {
   const response = await blog.gql.query({
     query: GetPostsPageQuery,
   })
 
   if (!response || response.error) {
-    logger.error(response, 'Get Posts Page')
-
-    return { ok: false, error: 'Not Found' }
+    return Result.fail('Not Found')
   }
 
   const item: PostsPageData = {
@@ -39,5 +37,5 @@ export default async function getPostsPage(): Promise<Core.Result<PostsPageData>
     posts: response.data.posts.items,
   }
 
-  return { ok: true, data: item }
+  return Result.success(item)
 }

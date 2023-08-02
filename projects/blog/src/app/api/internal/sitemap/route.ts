@@ -14,10 +14,10 @@ export async function GET() {
   const xml = toSitemapXML(items)
 
   if (!result.ok) {
-    logger.error(result, 'API (Internal): Sitemap')
+    logger.error(result, 'Internal API: Sitemap')
+  } else {
+    logger.info('Internal API: The sitemap was generated')
   }
-
-  logger.info('API (Internal): The Sitemap was generated')
 
   return new NextResponse(xml, {
     headers: {

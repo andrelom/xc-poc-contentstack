@@ -1,4 +1,4 @@
-import logger from '@xc/lib/logger'
+import Result from '@xc/lib/Result'
 import { blog } from '@xc/shared/clients/contentstack'
 
 export type PostPageData = Contentstack.Item<{
@@ -7,22 +7,20 @@ export type PostPageData = Contentstack.Item<{
   open_graph: Contentstack.Globals.OpenGraph
 }>
 
-export default async function getPostPage({ path }: { path: string }): Promise<Core.Result<PostPageData>> {
+export default async function getPostPage({ path }: { path: string }): Promise<Result<PostPageData>> {
   const result = await blog.api.find<PostPageData>('page_post', (query) => {
     return query.where('url', path).toJSON()
   })
 
   if (!result.ok) {
-    logger.error(result, 'Get Post Page')
-
-    return { ok: false, error: result.error }
+    return Result.from(result)
   }
 
   const item = result.data?.shift()
 
   if (!item) {
-    return { ok: false, error: 'Not Found' }
+    return Result.fail('Not Found')
   }
 
-  return { ok: true, data: item }
+  return Result.success(item)
 }

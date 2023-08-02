@@ -1,12 +1,12 @@
 export type CSSClassName = string | [string, boolean]
 
-export default function classNames(...entries: CSSClassName[]) {
-  return entries.reduce<string>((result, entry) => {
-    if (typeof entry === 'string') {
-      return `${result} ${entry}`
+export default function classNames(...values: CSSClassName[]) {
+  return values.reduce<string>((result, value) => {
+    if (typeof value === 'string') {
+      return `${result} ${value}`
     }
 
-    const [name, show] = entry
+    const [name, show] = value
 
     if (show) {
       return `${result} ${name}`

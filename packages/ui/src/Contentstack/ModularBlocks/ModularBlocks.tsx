@@ -13,8 +13,10 @@ export default function ModularBlocks({
   components: Record<string, ComponentType<ModularBlock>>
 }) {
   return useMemo(() => {
+    const available = Object.entries(components)
+
     return entries.reduce<JSX.Element[]>((children, entry) => {
-      for (const [name, Component] of Object.entries(components)) {
+      for (const [name, Component] of available) {
         const data = entry[name]
 
         if (data) {
@@ -22,7 +24,7 @@ export default function ModularBlocks({
         }
       }
 
-      logger.warn(`Modular Blocks: No component found for entry '${Object.keys(entry).join(', ')}'`)
+      logger.warn(`Modular Blocks: No component available for entry '${Object.keys(entry).join(', ')}'`)
 
       return children
     }, [])

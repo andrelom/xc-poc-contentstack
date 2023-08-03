@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache'
+import logger from '@xc/lib/logger/server'
 import Result from '@xc/lib/Result'
-import logger from '@xc/lib/logger'
 import getSitemapItems from '@xc/shared/data/blog/getSitemapItems'
 
 export async function POST(request: Request) {

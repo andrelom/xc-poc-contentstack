@@ -1,7 +1,7 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 import type Result from '@xc/lib/Result'
 
-import logger from '@xc/lib/logger'
+import logger from '@xc/lib/logger/server'
 
 export type MetadataGenerator = (
   page: Core.Page,

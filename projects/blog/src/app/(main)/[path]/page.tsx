@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import createMetadataGenerator from '@xc/lib/createMetadataGenerator'
 import getGenericPage from '@xc/shared/data/blog/getGenericPage'
 
-import ModularBlocks from '@xc/ui/ModularBlocks'
+import Contentstack from '@xc/ui/Contentstack'
 import HeroSection from '@xc/ui/HeroSection'
 
 export { dynamic, revalidate } from '@/settings'
@@ -25,7 +25,7 @@ export default async function Page({ params }: Core.Page<{ path: string }>) {
 
   return (
     <>
-      <ModularBlocks
+      <Contentstack.ModularBlocks
         entries={data.modular_blocks_main}
         components={{
           hero_section: HeroSection,

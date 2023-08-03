@@ -1,4 +1,4 @@
-import type { ModularBlock } from '@xc/ui/ModularBlocks'
+import type { ModularBlock } from 'src/Contentstack/ModularBlocks'
 
 import Contentstack from '@xc/ui/Contentstack'
 

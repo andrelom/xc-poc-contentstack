@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react'
-import type { ModularBlock } from '@xc/ui/ModularBlocks'
+import type { ModularBlock } from '@xc/ui/Contentstack'
 
 import NextLink from 'next/link'
 

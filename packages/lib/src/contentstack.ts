@@ -19,7 +19,7 @@ export type Options = {
 }
 
 if (typeof window !== 'undefined') {
-  throw new Error(`The 'lib/contentstack' is not compatible with the client environment`)
+  throw new Error(`The 'lib/contentstack' is not compatible with the browser`)
 }
 
 export class Contentstack {

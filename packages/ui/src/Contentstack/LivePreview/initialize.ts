@@ -1,10 +1,6 @@
 import LivePreviewUtils from '@contentstack/live-preview-utils'
 
 export default function initialize() {
-  const enabled = process.env.NEXT_PUBLIC_CONTENTSTACK_LIVE_PREVIEW === 'true'
-
-  if (!enabled) return
-
   const promise = LivePreviewUtils.init({
     ssr: true,
     enable: true,

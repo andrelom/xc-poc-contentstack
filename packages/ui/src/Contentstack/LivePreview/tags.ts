@@ -8,7 +8,7 @@ export default function tags(data: any, key: string) {
   if (!livepreview || !isObject(data)) return {}
 
   const $ = data['$']
-  const value = $ ? $[key] : {}
+  const value = isObject($) ? $[key] : {}
 
   if (!isObject(value)) return {}
 

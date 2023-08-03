@@ -24,8 +24,23 @@ export class Contentstack {
     this.stack = this.create()
   }
 
-  raw() {
-    return this.stack
+  setLivePreviewURLSearchParams(search: string) {
+    if (!this.options.preview.enable) return
+
+    const params = new URLSearchParams(search)
+    const uid = params.get('content_type_uid')
+    const preview = params.get('live_preview')
+
+    if (!uid || !preview) {
+      logger.error(`Contentstack: Invalid Live Preview URL ('${search}')`)
+
+      return
+    }
+
+    this.stack.livePreviewQuery({
+      content_type_uid: uid,
+      live_preview: preview,
+    })
   }
 
   async find<T = Record<string, any>>(

@@ -49,9 +49,10 @@ export class Contentstack {
   }
 
   private setLivePreviewQuery(preview: LivePreviewQuery | null | undefined) {
-    if (this.options.preview.enable && preview) {
-      this.stack.livePreviewQuery(preview)
-    }
+    if (!this.options.preview.enable) return
+    if (!preview?.live_preview || !preview?.content_type_uid) return
+
+    this.stack.livePreviewQuery(preview)
   }
 
   private create() {

@@ -1,7 +1,6 @@
 import type { SitemapItem } from '@xc/lib/sitemap'
 
 import Result from '@xc/lib/Result'
-import logger from '@xc/lib/logger'
 import { blog } from '@xc/shared/clients/contentstack'
 
 export type SitemapItemsData = SitemapItem[]

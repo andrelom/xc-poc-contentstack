@@ -14,10 +14,10 @@ export default function initialize() {
   })
 
   if (process.env.NODE_ENV !== 'production') {
-    console.log('Contentstack Live Preview: Initialization Started')
+    console.info('Contentstack Live Preview: Initialization Started')
 
-    promise?.then(() => console.log('Contentstack Live Preview: Initialization Succeeded'))
+    promise?.then(() => console.info('Contentstack Live Preview: Initialization Succeeded'))
 
-    promise?.catch((error) => console.log(error, 'Contentstack Live Preview: Initialization Failed'))
+    promise?.catch((error) => console.error(error, 'Contentstack Live Preview: Initialization Failed'))
   }
 }

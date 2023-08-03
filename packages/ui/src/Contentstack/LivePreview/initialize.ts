@@ -17,7 +17,11 @@ export default function initialize() {
 
   logger.info('Contentstack Live Preview: Initialization Started')
 
-  promise?.then(() => logger.info('Contentstack Live Preview: Initialization Succeeded'))
+  promise?.then(() => {
+    logger.info('Contentstack Live Preview: Initialization Succeeded')
+  })
 
-  promise?.catch((error) => logger.error(error, 'Contentstack Live Preview: Initialization Failed'))
+  promise?.catch((error) => {
+    logger.error(error, 'Contentstack Live Preview: Initialization Failed')
+  })
 }

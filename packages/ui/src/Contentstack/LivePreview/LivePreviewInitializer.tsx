@@ -10,5 +10,5 @@ export default function LivePreviewInitializer({ children }: { children: React.R
     initialize()
   }, [])
 
-  return <>{children}</>
+  return children
 }

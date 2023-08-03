@@ -8,9 +8,15 @@ export default function tags(data: any, key: string) {
   if (!livepreview || !isObject(data)) return {}
 
   const $ = data['$']
-  const value = isObject($) ? $[key] : {}
+  const value = isObject($) ? $[key] : undefined
 
-  if (!isObject(value)) return {}
+  if (!isObject(value)) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn(`Contentstack Live Preview: No editable tags found for '${key}'`)
+    }
+
+    return {}
+  }
 
   return value
 }

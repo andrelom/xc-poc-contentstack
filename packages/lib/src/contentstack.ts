@@ -26,17 +26,14 @@ export class Contentstack {
     this.stack = this.create()
   }
 
-  setLivePreviewQuery(query: LivePreviewQuery | null | undefined) {
-    if (this.options.preview.enable && query) {
-      this.stack.livePreviewQuery(query)
-    }
-  }
-
   async find<T = Record<string, any>>(
     type: string,
+    preview: LivePreviewQuery | null | undefined,
     builder: (query: Query) => Query,
   ): Promise<Result<Contentstack.Item<T>[]>> {
     try {
+      this.setLivePreviewQuery(preview)
+
       const stack = this.stack.ContentType(type).Query()
       const query = builder(stack)
       const items = await query.find()
@@ -48,6 +45,12 @@ export class Contentstack {
       logger.error(error, `Contentstack (Trace ID '${traceId}'): Query for type '${type}'`)
 
       return Result.fail('Woops', { traceId })
+    }
+  }
+
+  private setLivePreviewQuery(preview: LivePreviewQuery | null | undefined) {
+    if (this.options.preview.enable && preview) {
+      this.stack.livePreviewQuery(preview)
     }
   }
 

@@ -7,7 +7,7 @@ import { blog } from '@xc/shared/clients/contentstack'
 export type SitemapItemsData = SitemapItem[]
 
 const getPagesEntries = async (type: string) => {
-  const result = await blog.api.find(type, (query) => {
+  const result = await blog.api.find(type, null, (query) => {
     return query.only(['url', 'updated_at']).toJSON()
   })
 

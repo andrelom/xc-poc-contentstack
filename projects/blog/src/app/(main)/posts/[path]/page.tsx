@@ -12,7 +12,7 @@ export const generateMetadata = createMetadataGenerator(({ params }) => {
 })
 
 export default async function Page({ params, searchParams }: Core.Page<{ path: string }>) {
-  const result = await getPostPage({ path: `/posts/${params.path}`, query: searchParams })
+  const result = await getPostPage({ path: `/posts/${params.path}`, preview: searchParams })
 
   if (!result.ok || !result.data) {
     return notFound()

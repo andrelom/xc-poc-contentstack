@@ -8,10 +8,8 @@ export type HomePageData = Contentstack.Item<{
   open_graph: Contentstack.Globals.OpenGraph
 }>
 
-export default async function getHomePage({ query }: { query?: LivePreviewQuery }): Promise<Result<HomePageData>> {
-  blog.api.setLivePreviewQuery(query)
-
-  const result = await blog.api.find<HomePageData>('page_home', (query) => {
+export default async function getHomePage({ preview }: { preview?: LivePreviewQuery }): Promise<Result<HomePageData>> {
+  const result = await blog.api.find<HomePageData>('page_home', preview, (query) => {
     return query.toJSON()
   })
 

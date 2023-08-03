@@ -11,7 +11,7 @@ export const generateMetadata = createMetadataGenerator(() => {
 })
 
 export default async function Page({ searchParams }: Core.Page) {
-  const result = await getHomePage({ query: searchParams })
+  const result = await getHomePage({ preview: searchParams })
 
   if (!result.ok || !result.data) {
     return notFound()

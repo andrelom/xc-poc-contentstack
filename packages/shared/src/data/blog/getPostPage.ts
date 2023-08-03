@@ -11,14 +11,12 @@ export type PostPageData = Contentstack.Item<{
 
 export default async function getPostPage({
   path,
-  query,
+  preview,
 }: {
   path: string
-  query?: LivePreviewQuery
+  preview?: LivePreviewQuery
 }): Promise<Result<PostPageData>> {
-  blog.api.setLivePreviewQuery(query)
-
-  const result = await blog.api.find<PostPageData>('page_post', (query) => {
+  const result = await blog.api.find<PostPageData>('page_post', preview, (query) => {
     return query.where('url', path).toJSON()
   })
 

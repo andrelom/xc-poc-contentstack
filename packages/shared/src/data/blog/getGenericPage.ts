@@ -10,14 +10,12 @@ export type GenericPageData = Contentstack.Item<{
 
 export default async function getGenericPage({
   path,
-  query,
+  preview,
 }: {
   path: string
-  query?: LivePreviewQuery
+  preview?: LivePreviewQuery
 }): Promise<Result<GenericPageData>> {
-  blog.api.setLivePreviewQuery(query)
-
-  const result = await blog.api.find<GenericPageData>('page_generic', (query) => {
+  const result = await blog.api.find<GenericPageData>('page_generic', preview, (query) => {
     return query.where('url', path).toJSON()
   })
 

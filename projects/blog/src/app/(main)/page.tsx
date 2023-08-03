@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import { blog } from '@xc/shared/clients/contentstack'
 import createMetadataGenerator from '@xc/lib/createMetadataGenerator'
 import getHomePage from '@xc/shared/data/blog/getHomePage'
 
@@ -10,7 +11,9 @@ export const generateMetadata = createMetadataGenerator(() => {
   return getHomePage()
 })
 
-export default async function Page({}: Core.Page) {
+export default async function Page({ searchParams }: Core.Page) {
+  blog.api.setLivePreviewQuery(searchParams)
+
   const result = await getHomePage()
 
   if (!result.ok || !result.data) {

@@ -5,7 +5,7 @@ import getGenericPage from '@xc/shared/data/blog/getGenericPage'
 import Contentstack from '@xc/ui/Contentstack'
 import HeroSection from '@xc/ui/HeroSection'
 
-export { dynamic, revalidate } from '@/settings'
+export { dynamic, revalidate } from '@/ssr'
 
 export const generateMetadata = createMetadataGenerator(({ params }) => {
   return getGenericPage({ path: `/${params.path}` })

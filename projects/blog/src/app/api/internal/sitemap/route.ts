@@ -3,7 +3,7 @@ import logger from '@xc/lib/logger'
 import { toSitemapXML } from '@xc/lib/sitemap'
 import getSitemapItems from '@xc/shared/data/blog/getSitemapItems'
 
-export { dynamic, revalidate } from '@/settings'
+export { dynamic, revalidate } from '@/ssr'
 
 export async function GET() {
   const result = await getSitemapItems()

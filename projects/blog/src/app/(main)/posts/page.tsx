@@ -4,7 +4,7 @@ import getPostsPage from '@xc/shared/data/blog/getPostsPage'
 
 import Link from 'next/link'
 
-export { dynamic, revalidate } from '@/settings'
+export { dynamic, revalidate } from '@/ssr'
 
 export const generateMetadata = createMetadataGenerator(() => {
   return getPostsPage().then(({ ok, error, data }) => {

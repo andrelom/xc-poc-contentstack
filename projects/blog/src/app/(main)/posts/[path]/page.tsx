@@ -5,7 +5,7 @@ import getPostPage from '@xc/shared/data/blog/getPostPage'
 
 import MDXRemote from '@xc/ui/MDXRemote'
 
-export { dynamic, revalidate } from '@/settings'
+export { dynamic, revalidate } from '@/ssr'
 
 export const generateMetadata = createMetadataGenerator(({ params }) => {
   return getPostPage({ path: `/posts/${params.path}` })

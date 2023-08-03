@@ -4,10 +4,9 @@ import type { ModularBlock } from '@xc/ui/Contentstack'
 import Raw from 'next/link'
 import { tags } from '@xc/ui/Contentstack'
 
-export default function Link({
-  data,
-  ...props
-}: Omit<HTMLAttributes<HTMLAnchorElement>, 'href'> & ModularBlock<Contentstack.Fields.Link>) {
+type CustomHTMLAttributes = Omit<HTMLAttributes<HTMLAnchorElement>, 'href'>
+
+export default function Link({ data, ...props }: CustomHTMLAttributes & ModularBlock<Contentstack.Fields.Link>) {
   if (!data?.title || !data.href) return null
 
   return (

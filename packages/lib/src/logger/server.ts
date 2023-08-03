@@ -1,5 +1,11 @@
 import pino from 'pino'
 
+if (typeof window !== 'undefined') {
+  throw new Error(
+    `The 'logger/server' is not compatible with the client environment, please use the 'logger/client' instead`,
+  )
+}
+
 // Pino is a structured logging package.
 // See more at: https://getpino.io/#/docs/api
 const raw = pino({

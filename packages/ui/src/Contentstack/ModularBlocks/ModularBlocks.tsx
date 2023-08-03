@@ -14,12 +14,12 @@ export default function ModularBlocks({
   return useMemo(() => {
     const available = Object.entries(components)
 
-    return entries.reduce<JSX.Element[]>((children, entry, index) => {
+    return entries.reduce<JSX.Element[]>((children, entry) => {
       for (const [name, Component] of available) {
         const data = entry[name]
 
         if (data) {
-          return [...children, <Component key={index} data={data} />]
+          return [...children, <Component key={crypto.randomUUID()} data={data} />]
         }
       }
 

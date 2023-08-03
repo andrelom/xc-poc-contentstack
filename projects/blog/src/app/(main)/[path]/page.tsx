@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation'
-import { blog } from '@xc/shared/clients/contentstack'
 import createMetadataGenerator from '@xc/lib/createMetadataGenerator'
 import getGenericPage from '@xc/shared/data/blog/getGenericPage'
 
@@ -13,9 +12,7 @@ export const generateMetadata = createMetadataGenerator(({ params }) => {
 })
 
 export default async function Page({ params, searchParams }: Core.Page<{ path: string }>) {
-  blog.api.setLivePreviewQuery(searchParams)
-
-  const result = await getGenericPage({ path: `/${params.path}` })
+  const result = await getGenericPage({ path: `/${params.path}`, query: searchParams })
 
   if (!result.ok || !result.data) {
     return notFound()

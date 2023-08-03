@@ -26,8 +26,8 @@ export class Contentstack {
     this.stack = this.create()
   }
 
-  setLivePreviewQuery(query: LivePreviewQuery) {
-    if (this.options.preview.enable) {
+  setLivePreviewQuery(query: LivePreviewQuery | null | undefined) {
+    if (this.options.preview.enable && query) {
       this.stack.livePreviewQuery(query)
     }
   }

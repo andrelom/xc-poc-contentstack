@@ -1,4 +1,6 @@
-import { Stack, Region, Query } from 'contentstack'
+import type { Query, LivePreviewQuery } from 'contentstack'
+
+import { Stack, Region } from 'contentstack'
 import Result from '@xc/lib/Result'
 import logger from '@xc/lib/logger'
 
@@ -24,23 +26,10 @@ export class Contentstack {
     this.stack = this.create()
   }
 
-  setLivePreviewURLSearchParams(search: string) {
-    if (!this.options.preview.enable) return
-
-    const params = new URLSearchParams(search)
-    const uid = params.get('content_type_uid')
-    const preview = params.get('live_preview')
-
-    if (!uid || !preview) {
-      logger.error(`Contentstack: Invalid Live Preview URL ('${search}')`)
-
-      return
+  setLivePreviewQuery(query: LivePreviewQuery) {
+    if (this.options.preview.enable) {
+      this.stack.livePreviewQuery(query)
     }
-
-    this.stack.livePreviewQuery({
-      content_type_uid: uid,
-      live_preview: preview,
-    })
   }
 
   async find<T = Record<string, any>>(

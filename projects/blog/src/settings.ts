@@ -1,5 +1,3 @@
-const settings = {
-  revalidate: parseInt(process.env.NEXT_REVALIDATE) || Infinity,
-}
+export const dynamic = 'force-static'
 
-export default settings
+export const revalidate = parseInt(process.env.NEXT_REVALIDATE) || Infinity

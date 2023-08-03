@@ -2,11 +2,8 @@ import { NextResponse } from 'next/server'
 import logger from '@xc/lib/logger'
 import { toSitemapXML } from '@xc/lib/sitemap'
 import getSitemapItems from '@xc/shared/data/blog/getSitemapItems'
-import settings from '@/settings'
 
-export const revalidate = settings.revalidate
-
-export const dynamic = 'force-static'
+export { dynamic, revalidate } from '@/settings'
 
 export async function GET() {
   const result = await getSitemapItems()

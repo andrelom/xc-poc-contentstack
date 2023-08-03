@@ -1,4 +1,6 @@
-import LivePreviewInitializer from './LivePreviewInitializer'
+import dynamic from 'next/dynamic'
+
+const LivePreviewInitializer = dynamic(() => import('./LivePreviewInitializer'))
 
 const livepreview = process.env.NEXT_PUBLIC_CONTENTSTACK_LIVE_PREVIEW === 'true'
 

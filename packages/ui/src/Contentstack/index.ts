@@ -8,4 +8,6 @@ const Contentstack = {
 
 export type { ModularBlock } from './ModularBlocks'
 
+export { tags } from './LivePreview'
+
 export default Contentstack

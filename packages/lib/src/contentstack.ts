@@ -1,6 +1,7 @@
 import type { Query, LivePreviewQuery } from 'contentstack'
 
 import { Stack, Region } from 'contentstack'
+import { addEditableTags } from '@contentstack/utils'
 import Result from '@xc/lib/Result'
 import logger from '@xc/lib/logger'
 
@@ -37,6 +38,10 @@ export class Contentstack {
       const stack = this.stack.ContentType(type).Query()
       const query = builder(stack)
       const items = await query.find()
+
+      if (this.options.preview.enable) {
+        addEditableTags(items[0][0], type, true)
+      }
 
       return Result.success(items.flat())
     } catch (error) {

@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { serialize } from 'next-mdx-remote/serialize'
+import { blog } from '@xc/shared/clients/contentstack'
 import createMetadataGenerator from '@xc/lib/createMetadataGenerator'
 import getPostPage from '@xc/shared/data/blog/getPostPage'
 import settings from '@/settings'
@@ -14,7 +15,9 @@ export const generateMetadata = createMetadataGenerator(({ params }) => {
   return getPostPage({ path: `/posts/${params.path}` })
 })
 
-export default async function Page({ params }: Core.Page<{ path: string }>) {
+export default async function Page({ params, searchParams }: Core.Page<{ path: string }>) {
+  blog.api.setLivePreviewQuery(searchParams)
+
   const result = await getPostPage({ path: `/posts/${params.path}` })
 
   if (!result.ok || !result.data) {

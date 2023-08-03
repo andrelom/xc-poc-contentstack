@@ -1,11 +1,11 @@
 'use client'
 
 import { useEffect } from 'react'
-import setLivePreview from './setLivePreview'
+import initialize from './initialize'
 
 export default function LivePreview({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    setLivePreview()
+    initialize()
   }, [])
 
   return <>{children}</>

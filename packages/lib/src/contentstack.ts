@@ -5,7 +5,7 @@ import { addEditableTags } from '@contentstack/utils'
 import Result from '@xc/lib/Result'
 import logger from '@xc/lib/logger'
 
-export type ContentstackOptions = {
+export type Options = {
   key: string
   token: string
   environment: string
@@ -19,10 +19,10 @@ export type ContentstackOptions = {
 }
 
 export class Contentstack {
-  private options: ContentstackOptions
+  private options: Options
   private stack: Stack
 
-  constructor(options: ContentstackOptions) {
+  constructor(options: Options) {
     this.options = options
     this.stack = this.create()
   }
@@ -76,6 +76,6 @@ export class Contentstack {
   }
 }
 
-export function createContentstackClient(options: ContentstackOptions) {
+export function createContentstackClient(options: Options) {
   return new Contentstack(options)
 }

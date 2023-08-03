@@ -2,7 +2,7 @@ import pino from 'pino'
 
 if (typeof window !== 'undefined') {
   throw new Error(
-    `The 'lib/logger/server' is not compatible with the client environment, please use the 'lib/logger/client' instead`,
+    `The 'lib/logger/server' is not compatible with the browser, please use the 'lib/logger/client' instead`,
   )
 }
 

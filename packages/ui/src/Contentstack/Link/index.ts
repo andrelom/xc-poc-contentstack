@@ -1,5 +1,3 @@
-import dynamic from 'next/dynamic'
-
-const Link = dynamic(() => import('./Link'))
+import Link from './Link'
 
 export default Link

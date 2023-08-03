@@ -8,8 +8,9 @@ export default async function Layout({ children }: Core.Layout) {
 
   return (
     <>
-      <Contentstack.LivePreview />
-      <Root data={result.data}>{children}</Root>
+      <Contentstack.LivePreview>
+        <Root data={result.data}>{children}</Root>
+      </Contentstack.LivePreview>
     </>
   )
 }

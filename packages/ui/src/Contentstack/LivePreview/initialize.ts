@@ -1,3 +1,5 @@
+import logger from '@xc/lib/logger/client'
+
 import LivePreviewUtils from '@contentstack/live-preview-utils'
 
 export default function initialize() {
@@ -13,11 +15,9 @@ export default function initialize() {
     },
   })
 
-  if (process.env.NODE_ENV !== 'production') {
-    console.info('Contentstack Live Preview: Initialization Started')
+  logger.info('Contentstack Live Preview: Initialization Started')
 
-    promise?.then(() => console.info('Contentstack Live Preview: Initialization Succeeded'))
+  promise?.then(() => logger.info('Contentstack Live Preview: Initialization Succeeded'))
 
-    promise?.catch((error) => console.error(error, 'Contentstack Live Preview: Initialization Failed'))
-  }
+  promise?.catch((error) => logger.error(error, 'Contentstack Live Preview: Initialization Failed'))
 }

@@ -1,3 +1,5 @@
+import logger from '@xc/lib/logger/client'
+
 const livepreview = process.env.NEXT_PUBLIC_CONTENTSTACK_LIVE_PREVIEW === 'true'
 
 const isObject = (value: any) => {
@@ -11,9 +13,7 @@ export default function tags(data: any, key: string) {
   const value = isObject($) ? $[key] : undefined
 
   if (!isObject(value)) {
-    if (process.env.NODE_ENV !== 'production') {
-      console.warn(`Contentstack Live Preview: No editable tags found for '${key}'`)
-    }
+    logger.warn(`Contentstack Live Preview: No editable tags found for '${key}'`)
 
     return {}
   }

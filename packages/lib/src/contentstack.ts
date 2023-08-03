@@ -43,9 +43,7 @@ export class Contentstack {
       const query = builder(stack)
       const items = await query.find()
 
-      if (this.options.preview.enable) {
-        addEditableTags(items[0][0], type, true)
-      }
+      this.setEditableTags(type, preview, items)
 
       return Result.success(items.flat())
     } catch (error) {
@@ -62,6 +60,13 @@ export class Contentstack {
     if (!preview?.live_preview || !preview?.content_type_uid) return
 
     this.stack.livePreviewQuery(preview)
+  }
+
+  private setEditableTags(type: string, preview: LivePreviewQuery | null | undefined, items: any[][]) {
+    if (!this.options.preview.enable) return
+    if (!preview?.live_preview || !preview?.content_type_uid) return
+
+    addEditableTags(items[0][0], type, true)
   }
 
   private create() {

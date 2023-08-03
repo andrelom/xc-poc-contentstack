@@ -1,20 +1,17 @@
 import { notFound } from 'next/navigation'
 import createMetadataGenerator from '@xc/lib/createMetadataGenerator'
 import getHomePage from '@xc/shared/data/blog/getHomePage'
-import settings from '@/settings'
 
 import HeroSection from '@xc/ui/HeroSection'
 
-export const revalidate = settings.revalidate
-
-export const dynamic = 'force-static'
+export { dynamic, revalidate } from '@/settings'
 
 export const generateMetadata = createMetadataGenerator(() => {
-  return getHomePage()
+  return getHomePage({})
 })
 
-export default async function Page({}: Core.Page) {
-  const result = await getHomePage()
+export default async function Page({ searchParams }: Core.Page) {
+  const result = await getHomePage({ preview: searchParams })
 
   if (!result.ok || !result.data) {
     return notFound()

@@ -1,5 +1,6 @@
 import getRootLayot from '@xc/shared/data/blog/getRootLayout'
 
+import Contentstack from '@xc/ui/Contentstack'
 import { Root } from '@/layout'
 
 export default async function Layout({ children }: Core.Layout) {
@@ -7,7 +8,9 @@ export default async function Layout({ children }: Core.Layout) {
 
   return (
     <>
-      <Root data={result.data}>{children}</Root>
+      <Contentstack.LivePreview>
+        <Root data={result.data}>{children}</Root>
+      </Contentstack.LivePreview>
     </>
   )
 }

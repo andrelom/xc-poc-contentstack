@@ -1,21 +1,18 @@
 import { notFound } from 'next/navigation'
 import createMetadataGenerator from '@xc/lib/createMetadataGenerator'
 import getGenericPage from '@xc/shared/data/blog/getGenericPage'
-import settings from '@/settings'
 
 import Contentstack from '@xc/ui/Contentstack'
 import HeroSection from '@xc/ui/HeroSection'
 
-export const revalidate = settings.revalidate
-
-export const dynamic = 'force-static'
+export { dynamic, revalidate } from '@/settings'
 
 export const generateMetadata = createMetadataGenerator(({ params }) => {
   return getGenericPage({ path: `/${params.path}` })
 })
 
-export default async function Page({ params }: Core.Page<{ path: string }>) {
-  const result = await getGenericPage({ path: `/${params.path}` })
+export default async function Page({ params, searchParams }: Core.Page<{ path: string }>) {
+  const result = await getGenericPage({ path: `/${params.path}`, preview: searchParams })
 
   if (!result.ok || !result.data) {
     return notFound()

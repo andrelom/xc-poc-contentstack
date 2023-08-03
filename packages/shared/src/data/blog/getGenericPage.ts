@@ -1,3 +1,5 @@
+import type { LivePreviewQuery } from 'contentstack'
+
 import Result from '@xc/lib/Result'
 import { blog } from '@xc/shared/clients/contentstack'
 
@@ -6,8 +8,14 @@ export type GenericPageData = Contentstack.Item<{
   open_graph: Contentstack.Globals.OpenGraph
 }>
 
-export default async function getGenericPage({ path }: { path: string }): Promise<Result<GenericPageData>> {
-  const result = await blog.api.find<GenericPageData>('page_generic', (query) => {
+export default async function getGenericPage({
+  path,
+  preview,
+}: {
+  path: string
+  preview?: LivePreviewQuery
+}): Promise<Result<GenericPageData>> {
+  const result = await blog.api.find<GenericPageData>('page_generic', preview, (query) => {
     return query.where('url', path).toJSON()
   })
 

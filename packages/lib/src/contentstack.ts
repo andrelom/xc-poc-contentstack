@@ -1,4 +1,7 @@
-import { Stack, Region, Query } from 'contentstack'
+import type { Query, LivePreviewQuery } from 'contentstack'
+
+import { Stack, Region } from 'contentstack'
+import { addEditableTags } from '@contentstack/utils'
 import Result from '@xc/lib/Result'
 import logger from '@xc/lib/logger'
 
@@ -24,18 +27,21 @@ export class Contentstack {
     this.stack = this.create()
   }
 
-  raw() {
-    return this.stack
-  }
-
   async find<T = Record<string, any>>(
     type: string,
+    preview: LivePreviewQuery | null | undefined,
     builder: (query: Query) => Query,
   ): Promise<Result<Contentstack.Item<T>[]>> {
     try {
+      this.setLivePreviewQuery(preview)
+
       const stack = this.stack.ContentType(type).Query()
       const query = builder(stack)
       const items = await query.find()
+
+      if (this.options.preview.enable) {
+        addEditableTags(items[0][0], type, true)
+      }
 
       return Result.success(items.flat())
     } catch (error) {
@@ -45,6 +51,13 @@ export class Contentstack {
 
       return Result.fail('Woops', { traceId })
     }
+  }
+
+  private setLivePreviewQuery(preview: LivePreviewQuery | null | undefined) {
+    if (!this.options.preview.enable) return
+    if (!preview?.live_preview || !preview?.content_type_uid) return
+
+    this.stack.livePreviewQuery(preview)
   }
 
   private create() {

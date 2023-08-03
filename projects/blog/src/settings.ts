@@ -1,5 +1,5 @@
-const settings = {
-  revalidate: parseInt(process.env.NEXT_REVALIDATE) || Infinity,
-}
+const isLivePreviewEnabled = process.env.NEXT_PUBLIC_CONTENTSTACK_LIVE_PREVIEW === 'true'
 
-export default settings
+export const dynamic = isLivePreviewEnabled ? 'force-dynamic' : 'force-static'
+
+export const revalidate = isLivePreviewEnabled ? false : parseInt(process.env.NEXT_REVALIDATE) || Infinity

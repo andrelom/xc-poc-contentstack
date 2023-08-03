@@ -1,13 +1,10 @@
 import { notFound } from 'next/navigation'
 import createMetadataGenerator from '@xc/lib/createMetadataGenerator'
 import getPostsPage from '@xc/shared/data/blog/getPostsPage'
-import settings from '@/settings'
 
 import Link from 'next/link'
 
-export const revalidate = settings.revalidate
-
-export const dynamic = 'force-static'
+export { dynamic, revalidate } from '@/settings'
 
 export const generateMetadata = createMetadataGenerator(() => {
   return getPostsPage().then(({ ok, error, data }) => {

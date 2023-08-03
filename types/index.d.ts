@@ -24,14 +24,15 @@ declare namespace NodeJS {
     // Contentstack
     readonly CONTENTSTACK_REGION: 'US' | 'EU' | 'AZURE_NA' | 'AZURE_EU'
     readonly CONTENTSTACK_BRANCH: string
-    readonly CONTENTSTACK_ENVIRONMENT: string
-    readonly CONTENTSTACK_API_KEY: string
+    readonly NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT: string
+    readonly NEXT_PUBLIC_CONTENTSTACK_API_KEY: string
+    readonly NEXT_PUBLIC_CONTENTSTACK_API_HOST: string
+    readonly CONTENTSTACK_APP_HOST: string
     readonly CONTENTSTACK_DELIVERY_TOKEN: string
     readonly CONTENTSTACK_MANAGEMENT_TOKEN: string
-    readonly CONTENTSTACK_API_HOST: string
-    readonly CONTENTSTACK_APP_HOST: string
-    readonly CONTENTSTACK_LIVE_PREVIEW: string
-    readonly CONTENTSTACK_LIVE_EDIT_TAGS: string
+    readonly NEXT_PUBLIC_CONTENTSTACK_LIVE_PREVIEW: string
+    readonly NEXT_PUBLIC_CONTENTSTACK_LIVE_EDIT_TAGS: string
+    readonly CONTENTSTACK_GRAPHQL_URL: string
     // Application
     readonly APP_WEBHOOK_TOKEN: string
     readonly APP_PAGE_TYPES: string

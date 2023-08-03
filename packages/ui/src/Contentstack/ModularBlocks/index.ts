@@ -1,4 +1,6 @@
-import ModularBlocks from './ModularBlocks'
+import dynamic from 'next/dynamic'
+
+const ModularBlocks = dynamic(() => import('./ModularBlocks'))
 
 export type { ModularBlock } from './ModularBlocks'
 

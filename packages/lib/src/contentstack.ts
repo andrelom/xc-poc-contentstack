@@ -18,6 +18,10 @@ export type Options = {
   }
 }
 
+if (typeof window !== 'undefined') {
+  throw new Error(`The 'lib/contentstack' is not compatible with the client environment`)
+}
+
 export class Contentstack {
   private options: Options
   private stack: Stack

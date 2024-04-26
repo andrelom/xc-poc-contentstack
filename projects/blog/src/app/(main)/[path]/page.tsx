@@ -12,8 +12,10 @@ export const generateMetadata = createMetadataGenerator(({ params }) => {
 })
 
 export default async function Page({ params, searchParams }: Core.Page<{ path: string }>) {
+  console.log('path###############', params.path);
   const result = await getGenericPage({ path: `/${params.path}`, preview: searchParams })
 
+  
   if (!result.ok || !result.data) {
     return notFound()
   }

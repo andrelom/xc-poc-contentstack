@@ -1,0 +1,743 @@
+.marketing-pages-lightning {
+    color: hsl(0, 0%, 20%);
+    font-family: Mukta, sans-serif;
+    margin: 0 auto 48px;
+    max-width: 70rem;
+  }
+  
+  .marketing-pages-lightning a:link,
+  .marketing-pages-lightning a:visited {
+    color: hsl(231, 50%, 70%);
+    text-decoration: none;
+  }
+  
+  .marketing-pages-lightning a:focus,
+  .marketing-pages-lightning a:hover {
+    color: hsl(231, 50%, 70%);
+    text-decoration: underline;
+  }
+  
+  .marketing-pages-lightning a:active {
+    color: hsl(3, 86%, 54%);
+    text-decoration: underline;
+  }
+  
+  .marketing-pages-lightning a.button {
+    border: 1px solid hsl(231, 50%, 45%); /* #394aab */
+    border-radius: 8px;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .4px;
+    margin-top: 12px;
+    padding: 6px 14px;
+    text-decoration: none;
+    word-spacing: 1px;
+  }
+  
+  .marketing-pages-lightning a.button:link,
+  .marketing-pages-lightning a.button:visited {
+    color: hsl(231, 50%, 45%);; /* #394aab */
+  }
+  
+  .marketing-pages-lightning a.button:active,
+  .marketing-pages-lightning a.button:focus,
+  .marketing-pages-lightning a.button:hover {
+    border-color: hsl(3, 86%, 54%);
+    color: hsl(3, 86%, 54%);
+  }
+  
+  .marketing-pages-lightning a:focus,
+  .marketing-pages-lightning input:focus,
+  .marketing-pages-lightning select:focus,
+  .marketing-pages-lightning textarea:focus {
+    outline: none;
+  }
+  
+  .marketing-pages-lightning h1 {
+    color: hsl(0, 0%, 20%);
+    font-family: Mukta, sans-serif;
+    font-size: 36px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    line-height: 44px;
+    margin: 34px 0;
+    text-transform: none;
+    word-spacing: 2px;
+  }
+  
+  .marketing-pages-lightning h1.summary-title {
+    color: hsl(0, 0%, 100%);
+    font-family: Franchise, Mukta, sans-serif;
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin: 10px 0 0 60px;
+    text-transform: uppercase;
+    word-spacing: 2px;
+  }
+  
+  .marketing-pages-lightning h1.summary-title::after {
+    border-bottom: 4px solid hsl(3, 86%, 54%);
+    content: "";
+    display: block;
+    height: 30px;
+    width: 290px;
+  }
+  
+  .marketing-pages-lightning h2 {
+    color: hsl(231, 50%, 45%); /* #394aab */
+    font-family: Franchise, Mukta, sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 42px;
+    margin: 40px 0 20px;
+    text-transform: uppercase;
+    word-spacing: 2px;
+  }
+  
+  .marketing-pages-lightning h2.category {
+    border-bottom: 1px solid #999;
+    color: hsl(0, 0%, 20%);
+    font-family: Mukta, sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: .5px;
+    line-height: 1;
+    margin: 40px 0;
+    padding-bottom: 16px;
+    text-transform: none;
+    word-spacing: .8px;
+  }
+  
+  .marketing-pages-lightning h3 {
+    color: hsl(0, 0%, 20%);
+    font-family: Mukta, sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 36px;
+    margin: 24px 0;
+  }
+  
+  .marketing-pages-lightning h3.summary {
+    color: hsl(231, 50%, 45%); /* #394aab */
+    font-family: Mukta, sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: 0.75px;
+    line-height: 22px;
+    margin: 40px 0 10px;
+  }
+  
+  .marketing-pages-lightning h3.summary a:link,
+  .marketing-pages-lightning h3.summary a:visited {
+    color: hsl(231, 50%, 45%); /* #394aab */
+    letter-spacing: .4px;
+    text-decoration: none;
+  }
+  
+  .marketing-pages-lightning h3.summary a:focus,
+  .marketing-pages-lightning h3.summary a:hover {
+    color: hsl(231, 50%, 70%);
+    text-decoration: underline;
+  }
+  
+  .marketing-pages-lightning h4 {
+    color: hsl(0, 0%, 20%);
+    font-family: Mukta, sans-serif;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 800;
+    line-height: 36px;
+    margin: 24px 0 10px;
+  }
+  
+  .marketing-pages-lightning aside {
+    color: hsl(0, 0%, 20%);
+    border: 1px solid hsl(0, 0%, 60%);
+    clear: both;
+    line-height: 34px;
+    margin: 30px 0 36px;
+    padding: 24px 48px;
+  }
+  
+  .marketing-pages-lightning .aside-alert {
+    border-radius: 12px;
+  }
+  
+  .marketing-pages-lightning .aside-header {
+    color: hsl(3, 86%, 54%);
+    font-size: 20px;
+    font-weight: 800;
+    padding: 6px;
+    text-align: center;
+  }
+  
+  .marketing-pages-lightning figcaption {
+    font-weight: 400;
+    margin-top: 12px;
+    text-align: center;
+  }
+  
+  .marketing-pages-lightning img.float-left {
+    display: block;
+    float: left;
+    margin: 0 40px 20px 0;
+  }
+  
+  .marketing-pages-lightning img.float-right {
+    display: block;
+    float: right;
+    margin: 0 0 20px 40px;
+  }
+  
+  @media screen and (max-width: 1120px) {
+    .marketing-pages-lightning img.float-left,
+    .marketing-pages-lightning img.float-right {
+      float: none;
+      margin: 0 auto 3em;
+    }
+  }
+  
+  .marketing-pages-lightning img.no-float {
+    display: block;
+    float: none;
+    margin: 0 auto;
+  }
+  
+  .marketing-pages-lightning .clear-float {
+    clear: both;
+  }
+  
+  .marketing-pages-lightning p {
+    color: hsl(0, 0%, 20%);
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.35px;
+    line-height: 30px;
+    margin-bottom: 16px;
+  }
+  
+  .marketing-pages-lightning p.summary {
+    letter-spacing: .75px;
+    line-height: 26px;
+  }
+  
+  .marketing-pages-lightning p.summary-tagline {
+    color: hsl(0, 0%, 100%);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 26px;
+    margin: 30px 0 0 60px;
+    max-width: 50%;
+  }
+  
+  .marketing-pages-lightning ol,
+  .marketing-pages-lightning ul {
+    list-style-position: outside;
+    margin-bottom: 16px;
+  }
+  
+  .marketing-pages-lightning ol {
+    list-style-type: decimal;
+    padding-left: 14px;
+  }
+  
+  .marketing-pages-lightning ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  .marketing-pages-lightning ol li,
+  .marketing-pages-lightning ul li {
+    line-height: 30px;
+    margin-bottom: 4px;
+  }
+  
+  .marketing-pages-lightning ol.second-level {
+    list-style-type: lower-alpha;
+    padding-left: 14px;
+  }
+  
+  .marketing-pages-lightning ul.second-level {
+    list-style-type: circle;
+    padding-left: 24px;
+  }
+  
+  .marketing-pages-lightning .tech-tip ul.second-level {
+    padding-left: 34px;
+  }
+  
+  .marketing-pages-lightning ol.second-level li,
+  .marketing-pages-lightning ul.second-level li {
+    margin-left: 2px;
+  }
+  
+  .marketing-pages-lightning strong {
+    font-weight: 800;
+  }
+  
+  /* -------------------- Tables -------------------- */
+  
+  .marketing-pages-lightning table {
+    border-collapse: collapse;
+    margin: 36px auto 100px;
+    width: 75%;
+  }
+  
+  .marketing-pages-lightning table.full-width {
+    width: 100%;
+  }
+  
+  .marketing-pages-lightning caption {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+    text-align: center;
+    word-spacing: 2px;
+  }
+  
+  .marketing-pages-lightning td,
+  .marketing-pages-lightning th {
+    border: 1px solid hsl(0, 0%, 80%);
+    letter-spacing: .35px;
+    line-height: 20px;
+    padding: 16px 24px;
+    vertical-align: middle;
+    word-spacing: 1px;
+  }
+  
+  .marketing-pages-lightning td a:link,
+  .marketing-pages-lightning th a:link,
+  .marketing-pages-lightning td a:visited,
+  .marketing-pages-lightning th a:visited {
+    color: hsl(231, 50%, 70%);
+    text-decoration: none;
+  }
+  
+  .marketing-pages-lightning td a:focus,
+  .marketing-pages-lightning th a:focus,
+  .marketing-pages-lightning td a:hover,
+  .marketing-pages-lightning th a:hover {
+    text-decoration: underline;
+  }
+  
+  .marketing-pages-lightning td a:active,
+  .marketing-pages-lightning td a:active {
+    color: hsl(3, 86%, 54%);
+    text-decoration: underline;
+  }
+  
+  .marketing-pages-lightning thead th {
+    background-color: hsl(223, 80%, 86%);
+    font-weight: 800;
+    text-align: center;
+  }
+  
+  .marketing-pages-lightning thead .subheader th {
+    background-color: hsl(0, 0%, 94%);
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 16px;
+    vertical-align: bottom;
+  }
+  
+  .marketing-pages-lightning tbody th {
+    background-color: hsl(0, 0%, 94%);
+    font-weight: 600;
+  }
+  
+  .marketing-pages-lightning .table-row-subtitle {
+    background-color: hsl(0, 0%, 80%);
+    font-weight: 700;
+  }
+  
+  .marketing-pages-lightning .table-row-subtitle.centered {
+    text-align: center;
+  }
+  
+  /* -------------------- Avoiding Air Intake Failure ---------------------------- */
+  
+  .marketing-pages-lightning .air-intake-failure tbody td {
+    font-weight: 800;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .marketing-pages-lightning .air-intake-failure thead th {
+    font-weight: 800;
+    text-align: center;
+    vertical-align: bottom;
+  }
+  
+  /* -------------------- Drums -------------------------------------------------- */
+  
+  .marketing-pages-lightning .brake-drums td,
+  .marketing-pages-lightning .brake-drums th {
+    padding: 12px 0;
+    text-align: center;
+  }
+  
+  /* --------------------  FM&B Extended Life Drums ------------------------------ */
+  
+  .marketing-pages-lightning .fmb-extended-life-drums {
+    padding: 12px 0;
+    text-align: center;
+  }
+  
+  /* -------------------- Motor Wheel Genuine Centrifuse ------------------------- */
+  
+  .marketing-pages-lightning .motor-wheel-genuine-centrifuse {
+    padding: 12px 0;
+    text-align: center;
+  }
+  
+  /* -------------------- Brake Shoes Relined ------------------------------------ */
+  
+  .marketing-pages-lightning .brake-shoes-relined {
+    font-weight: 400;
+    margin-bottom: 30px;
+    margin-top: 80px;
+    text-align: center;
+  }
+  
+  .marketing-pages-lightning table.brake-shoes-relined td,
+  .marketing-pages-lightning table.brake-shoes-relined th {
+    background-color: hsl(0, 0%, 100%);
+  }
+  
+  .marketing-pages-lightning .brake-shoes-relined tr.brake-mixes th:first-of-type {
+    border-left: 0;
+    border-top: 0;
+  }
+  
+  .marketing-pages-lightning .brake-shoes-relined tr.brake-sizes th {
+    margin-top: 80px;
+    padding: 8px 0;
+  }
+  
+  .marketing-pages-lightning .brake-shoes-relined tr.brake-sizes td.bg-color-white,
+  .marketing-pages-lightning .brake-shoes-relined tr.brake-sizes th.bg-color-white {
+    background-color: hsl(0, 0%, 100%);
+  }
+  
+  .marketing-pages-lightning .brake-shoes-relined tr.brake-sizes td.bg-color-black,
+  .marketing-pages-lightning .brake-shoes-relined tr.brake-sizes th.bg-color-black {
+    background-color: hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+  }
+  
+  .marketing-pages-lightning .brake-shoes-relined tr td.bg-color-gray {
+    background-color: hsl(0, 0%, 90%);
+  }
+  
+  .marketing-pages-lightning .brake-shoes-relined tr.brake-sizes td.bg-color-green,
+  .marketing-pages-lightning .brake-shoes-relined tr.brake-sizes th.bg-color-green {
+    background-color: hsl(146, 79%, 28%);
+    color: hsl(0, 0%, 100%);
+  }
+  
+  .marketing-pages-lightning .brake-shoes-relined tr td.bg-color-green-light {
+    background-color: hsl(146, 79%, 90%);
+  }
+  
+  .marketing-pages-lightning .brake-shoes-relined tr.brake-sizes td.bg-color-blue,
+  .marketing-pages-lightning .brake-shoes-relined tr.brake-sizes th.bg-color-blue {
+    background-color: hsl(231, 50%, 45%);  /* #394aab */
+    color: hsl(0, 0%, 100%);
+  }
+  
+  .marketing-pages-lightning .brake-shoes-relined tr td.bg-color-blue-light {
+    background-color: hsl(222, 99%, 90%);
+  }
+  
+  .marketing-pages-lightning .brake-shoes-relined tr.brake-sizes td.bg-color-red,
+  .marketing-pages-lightning .brake-shoes-relined tr.brake-sizes th.bg-color-red {
+    background-color: hsl(3, 86%, 54%);
+    color: hsl(0, 0%, 100%);
+  }
+  
+  .marketing-pages-lightning .brake-shoes-relined tr td.bg-color-red-light {
+    background-color: hsl(3, 86%, 90%);
+  }
+  
+  .marketing-pages-lightning .brake-shoes-relined caption {
+    margin-bottom: 34px;
+    position: relative;
+  }
+  
+  .marketing-pages-lightning .brake-shoes-relined caption .caption-image {
+    margin-top: 40px;
+  }
+  
+  .marketing-pages-lightning .brake-shoes-relined caption .caption-logo {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: -10px;
+  }
+  
+  /* -------------------- OTR Brake Shoe KitS -------------------------------------- */
+  
+  .marketing-pages-lightning .otr-brake-shoe-kits {
+    margin-top: 160px;
+  }
+  
+  .marketing-pages-lightning .otr-brake-shoe-kits td,
+  .marketing-pages-lightning .otr-brake-shoe-kits th {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .75px;
+    padding: 4px 0;
+    text-align: center;
+  }
+  
+  .marketing-pages-lightning .otr-brake-shoe-kits th {
+    background-color: hsl(0, 0%, 90%);
+  }
+  
+  .marketing-pages-lightning .otr-brake-shoe-kits th.columnheader {
+    background-color: hsl(0, 0%, 90%);
+  }
+  
+  .marketing-pages-lightning .otr-brake-shoe-kits th.rowheader {
+    background-color: hsl(0, 0%, 70%);
+    line-height: 14px;
+    padding-left: 12px;
+    padding-right: 12px;
+    text-align: left;
+  }
+  
+  .marketing-pages-lightning .otr-brake-shoe-kits th.subheader {
+    background-color: hsl(0, 0%, 80%);
+    letter-spacing: 1px;
+    font-size: 11px;
+    line-height: 40px;
+    padding-left: 12px;
+    text-align: left;
+  }
+  
+  .marketing-pages-lightning .otr-brake-shoe-kits td.bg-color-black {
+    background-color: hsl(0, 0%, 0%);
+    color: hsl(0, 0%, 100%);
+  }
+  
+  .marketing-pages-lightning .otr-brake-shoe-kits td.bg-color-blue {
+    background-color: hsl(222, 60%, 65%);
+    color: hsl(0, 0%, 100%);
+  }
+  
+  .marketing-pages-lightning .otr-brake-shoe-kits td.bg-color-blue-dark {
+    background-color: hsl(222, 60%, 40%);
+    color: hsl(0, 0%, 100%);
+  }
+  
+  .marketing-pages-lightning .otr-brake-shoe-kits td.bg-color-blue-light {
+    background-color: hsl(222,600%, 85%);
+  }
+  
+  .marketing-pages-lightning .otr-brake-shoe-kits td.bg-color-gold {
+    background-color: hsl(45, 100%, 25%);
+    color: hsl(0, 0%, 100%);
+  }
+  
+  .marketing-pages-lightning .otr-brake-shoe-kits td.bg-color-green {
+    background-color: hsl(90, 40%, 40%);
+    color: hsl(0, 0%, 100%);
+  }
+  
+  .marketing-pages-lightning .otr-brake-shoe-kits td.bg-color-green-dark {
+    background-color: hsl(90, 40%, 30%);
+    color: hsl(0, 0%, 100%);
+  }
+  
+  .marketing-pages-lightning .otr-brake-shoe-kits td.bg-color-green-light {
+    background-color: hsl(90, 40%, 65%);
+  }
+  
+  .marketing-pages-lightning .otr-brake-shoe-kits td.bg-color-orange {
+    background-color: hsl(35, 95%, 60%);
+  }
+  
+  .marketing-pages-lightning .otr-brake-shoe-kits td.bg-color-red {
+    background-color: hsl(0, 100%,50%);
+    color: hsl(0, 0%, 100%);
+  }
+  
+  .marketing-pages-lightning .otr-brake-shoe-kits td.bg-color-silver {
+    background-color: hsl(0, 0%, 85%);
+  }
+  
+  /* ------------- Participating Part Number Quick Reference ---------------------------- */
+  .marketing-pages-lightning .participating-part-number-quick-reference td {
+    text-align: center;
+  }
+  
+  /* ------------------- End Tables ----------------------------------------------------- */
+  
+  .marketing-pages-lightning .breadcrumbs {
+    font-size: 14px;
+    margin-top: 34px;
+  }
+  
+  .marketing-pages-lightning .breadcrumb {
+    display: inline-block;
+  }
+  
+  .marketing-pages-lightning .card {
+    margin: 36px 34px 0 0;
+    width: 29%;
+  }
+  
+  .marketing-pages-lightning .card.summary {
+    margin: 0 0 48px;
+  }
+  
+  .marketing-pages-lightning .card.summary a {
+    color: hsl(231, 50%, 45%);  /* #394aab */
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: .4px;
+    text-decoration: none;
+  }
+  
+  .marketing-pages-lightning .card.summary a:link,
+  .marketing-pages-lightning .card.summary a:visited {
+    color: hsl(231, 50%, 45%);  /* #394aab */
+    text-decoration: none;
+  }
+  
+  .marketing-pages-lightning .card.summary a:focus,
+  .marketing-pages-lightning .card.summary a:hover {
+    color: hsl(231, 50%, 70%);
+    text-decoration: underline;
+  }
+  
+  .marketing-pages-lightning .card.summary a:active {
+    color: hsl(3, 86%, 54%);
+    text-decoration: underline;
+  }
+  
+  .marketing-pages-lightning .card .card-image {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .marketing-pages-lightning .card .card-image.card-image-tall {
+    height: 400px;
+  }
+  
+  .marketing-pages-lightning .card .card-image img {
+    display: block;
+    height: 275px;
+  }
+  
+  .marketing-pages-lightning .flex {
+    align-items: start;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+  }
+  
+  .marketing-pages-lightning .flex.summary {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    margin-bottom: 40px;
+  }
+  
+  .marketing-pages-lightning section:last-of-type .flex.summary {
+    border-bottom: none;
+  }
+  
+  .marketing-pages-lightning .flex.two-wide {
+    gap: 0;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  
+  .marketing-pages-lightning .flex.two-wide .card {
+    width: 45%;
+  }
+  
+  .marketing-pages-lightning .footnote {
+    border-top: 1px solid hsl(0, 0%, 80%);
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 24px;
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+  
+  .marketing-pages-lightning .disclaimer,
+  .marketing-pages-lightning .references,
+  .marketing-pages-lightning .resources {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 24px;
+    margin: 12px 0 0;
+  }
+  
+  .marketing-pages-lightning .summary-hero {
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to right, #000 30%, transparent), url('https://www2.fleetpride.com/imagesns/cms/resources-summary-hero.png');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    height: 240px;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+  
+  .marketing-pages-lightning .tech-tip {
+    background-color: hsl(0, 0%, 94%);
+    border: 1px solid hsl(0, 0%, 60%);
+    border-radius: 12px;
+    clear: both;
+    margin: 32px 0;
+    padding: 24px 48px;
+  }
+  
+  .marketing-pages-lightning .tech-tip h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 14px 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  .marketing-pages-lightning .tech-tip li {
+    line-height: 36px;
+  }
+  
+  .marketing-pages-lightning .tech-tip ul.no-marker {
+    list-style-type: none;
+    padding-inline-start: 0;
+  }
+  
+  .marketing-pages-lightning .tech-tip ul.second-level {
+    list-style-type: disc;
+    margin-top: 6px;
+  }
+  
+  .marketing-pages-lightning .tech-tip ul.second-level li {
+    margin-left: -9px;
+  }
+  
+  .marketing-pages-lightning .written-date {
+    font-style: italic;
+    letter-spacing: .25px;
+    margin: 0 0 40px;
+  }
+  

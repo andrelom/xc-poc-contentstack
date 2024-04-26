@@ -5,9 +5,12 @@ import { blog } from '@xc/shared/clients/contentstack'
 
 export type ArticlePageData = Contentstack.Item<{
   article_title: string
-  url: string
-  page_components: Record<string, any>[]
-  open_graph: Contentstack.Globals.OpenGraph
+      article_summary: string
+      article_image: any
+      article_date: Date
+      article_body: string
+    open_graph: Contentstack.Globals.OpenGraph
+    $?: any
 }>
 
 export default async function getPage({

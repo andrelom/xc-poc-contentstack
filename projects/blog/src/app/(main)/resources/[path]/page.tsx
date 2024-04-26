@@ -4,7 +4,7 @@ import { tags } from '@xc/ui/Contentstack'
 import Contentstack from '@xc/ui/Contentstack'
 import getArticlePage from '@xc/shared/data/blog/getArticlePage'
 export { dynamic, revalidate } from '@/ssr'
-import ArticleSection from '@xc/ui/Article'
+import ArticleSection from '@xc/ui/Article/ArticleSection'
 
 export const generateMetadata = createMetadataGenerator(({ params }) => {
   return getArticlePage({ path: `/resources/${params.path}` })
@@ -13,7 +13,6 @@ export const generateMetadata = createMetadataGenerator(({ params }) => {
 export default async function Page({ params, searchParams }: Core.Page<{ path: string }>) {
   const result = await getArticlePage({ path: `/resources/${params.path}`, preview: searchParams })
 
-  console.log('article---------------', result)
   if (!result.ok || !result.data) {
     return notFound()
   }
@@ -22,12 +21,7 @@ export default async function Page({ params, searchParams }: Core.Page<{ path: s
   return (
     <>
       <div className='marketing-pages-lightning'>
-        <Contentstack.ModularBlocks
-          entries={result.data.page_components}
-          components={{
-            article: ArticleSection,
-          }}
-        />
+        <ArticleSection data={result.data}/>
       </div>
     </>
   )

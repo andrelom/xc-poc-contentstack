@@ -14,6 +14,8 @@ export default function ModularBlocks({
 }) {
   return useMemo(() => {
     const available = Object.entries(components)
+    console.log('entrieeeeeeeeeeee', entries);
+    console.log('aaaaaaaaaaa', available, components);
 
     return entries.reduce<JSX.Element[]>((children, entry) => {
       for (const [name, Component] of available) {

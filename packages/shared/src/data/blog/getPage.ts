@@ -6,6 +6,7 @@ import { blog } from '@xc/shared/clients/contentstack'
 export type PageData = Contentstack.Item<{
   title: string
   url: string
+  components: Record<string, any>[]
   open_graph: Contentstack.Globals.OpenGraph
 }>
 
@@ -17,7 +18,7 @@ export default async function getPage({
   preview?: LivePreviewQuery
 }): Promise<Result<PageData>> {
   const result = await blog.api.find<PageData>('page', preview, (query) => {
-    return query.where('url', path).toJSON()
+    return query.where('url', path).includeReference(['components','components.team']).toJSON()
   })
 
   if (!result.ok) {

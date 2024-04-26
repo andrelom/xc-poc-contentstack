@@ -2,8 +2,6 @@ import { notFound } from 'next/navigation'
 import createMetadataGenerator from '@xc/lib/createMetadataGenerator'
 import getHomePage from '@xc/shared/data/blog/getHomePage'
 
-import HeroSection from '@xc/ui/HeroSection'
-
 export { dynamic, revalidate } from '@/ssr'
 
 export const generateMetadata = createMetadataGenerator(() => {
@@ -19,7 +17,7 @@ export default async function Page({ searchParams }: Core.Page) {
 
   return (
     <>
-      <HeroSection data={result.data.hero_section} />
+      <div>{result.data?.title}</div>
     </>
   )
 }

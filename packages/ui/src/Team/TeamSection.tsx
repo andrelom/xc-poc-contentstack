@@ -7,21 +7,25 @@ export default function TeamSection({ data }: ModularBlock<Contentstack.Globals.
   if (!data) return null
 
   return (
-    <div>
-        <h1 {...tags(data, 'title')}>
+    <div className='marketing-page'>
+        <h1 className='dxp-text-heading-xlarge' {...tags(data, 'title')}>
           {data.title}
         </h1>
-        <ul>
+        <hr/>
           {
-          data.team_members?.map((member) => (
-            <li>
-              <h2>{member.title}</h2>
-              <img src={member.image?.url} alt={member.image?.title} />
-              <div dangerouslySetInnerHTML={{ __html: member.description }}/>
-            </li>
+          data.team_members?.map((member) => (              
+              <div className="slds-grid slds-gutters slds-wrap">
+                <div className="slds-col slds-size_2-of-12 slds-var-m-bottom_large">
+                  <img src={member.image?.url} alt={member.image?.title}/>
+                </div>
+                <div className="slds-col slds-size_10-of-12 slds-var-m-bottom_large">
+                  <h2 className="dxp-text-heading-large">{member.title}</h2>
+                  <div dangerouslySetInnerHTML={{ __html: member.description }}/>
+                </div>
+              </div>
             ))
           }
-        </ul>
+        
     </div>
   )
 }

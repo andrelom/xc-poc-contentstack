@@ -14,6 +14,7 @@ export const generateMetadata = createMetadataGenerator(({ params }) => {
 export default async function Page({ params, searchParams }: Core.Page<{ path: string }>) {
   const result = await getPage({ path: `/parts/${params.path}`, preview: searchParams })
 
+  console.log('>>>>>>>>>>>>>>>>>>>>parts', result);
   if (!result.ok || !result.data) {
     return notFound()
   }

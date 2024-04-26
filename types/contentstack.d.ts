@@ -73,6 +73,7 @@ declare namespace Contentstack {
       variation: 'default' | 'left'
       title: string
       description: string
+      background_color: string
       primary_link: Contentstack.Fields.Link
       secondary_link: Contentstack.Fields.Link
     }

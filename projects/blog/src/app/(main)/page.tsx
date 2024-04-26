@@ -10,16 +10,16 @@ export const generateMetadata = createMetadataGenerator(() => {
 })
 
 export default async function Page({ searchParams }: Core.Page) {
-  const result = await getHomePage({ preview: searchParams })
+  //const result = await getHomePage({ preview: searchParams })
 
-  if (!result.ok || !result.data) {
-    return notFound()
-  }
+  // if (!result.ok || !result.data) {
+  //   return notFound()
+  // }
 
   return (
     <>
       <div>
-        <h1 {...tags(result.data, 'title')}>{result.data?.title}</h1>
+        home page
       </div>
     </>
   )

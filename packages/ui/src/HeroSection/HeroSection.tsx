@@ -8,14 +8,13 @@ export default function HeroSection({ data }: ModularBlock<Contentstack.Globals.
   if (!data) return null
 
   return (
-    <div className={css.Wrapper}>
+    <div className={css.Wrapper} style={{ backgroundColor: `${data.background_color}`}}>
       <div className={css.Body}>
         <h1 className={css.Title} {...tags(data, 'title')}>
           {data.title}
         </h1>
-        <p className={css.Dscription} {...tags(data, 'description')}>
-          {data.description}
-        </p>
+        <div className={css.Dscription} {...tags(data, 'description')} dangerouslySetInnerHTML={{__html: data.description}}/>
+      
         <div className={css.Links}>
           <Contentstack.Link className={css.PrimaryLink} data={data.primary_link} />
           <Contentstack.Link className={css.SecondaryLink} data={data.secondary_link} />

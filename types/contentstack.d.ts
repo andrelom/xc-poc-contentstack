@@ -92,5 +92,13 @@ declare namespace Contentstack {
       description: string
       image: any
     }
+
+    type ArticleSection = {
+      article_title: string
+      article_summary: string
+      article_image: any
+      article_date: Date
+      article_body: string
+    }
   }
 }

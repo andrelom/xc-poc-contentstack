@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation'
 import createMetadataGenerator from '@xc/lib/createMetadataGenerator'
 import { tags } from '@xc/ui/Contentstack'
 import getContentPage from '@xc/shared/data/blog/getContentPage'
-
 export { dynamic, revalidate } from '@/ssr'
 
 export const generateMetadata = createMetadataGenerator(({ params }) => {
@@ -19,7 +18,7 @@ export default async function Page({ params, searchParams }: Core.Page<{ path: s
 
   return (
     <>
-      <div {...tags(result.data, 'body')} dangerouslySetInnerHTML={{ __html: result.data.body }} ></div>;
+      <div className="marketing-pages-lightning" {...tags(result.data, 'body')} dangerouslySetInnerHTML={{ __html: result.data.body }} ></div>;
     </>
   )
 }

@@ -100,6 +100,12 @@ declare namespace Contentstack {
       article_image: any
       article_date: Date
       article_body: string
+      url: string
+    }
+
+    type ArticleListing = {
+      title: string
+      articles: ArticleSection[]
     }
   }
 }

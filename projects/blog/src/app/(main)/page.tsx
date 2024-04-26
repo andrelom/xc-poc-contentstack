@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation'
+import { tags } from '@xc/ui/Contentstack'
 import createMetadataGenerator from '@xc/lib/createMetadataGenerator'
 import getHomePage from '@xc/shared/data/blog/getHomePage'
 
@@ -17,7 +18,9 @@ export default async function Page({ searchParams }: Core.Page) {
 
   return (
     <>
-      <div>{result.data?.title}</div>
+      <div>
+        <h1 {...tags(result.data, 'title')}>{result.data?.title}</h1>
+      </div>
     </>
   )
 }

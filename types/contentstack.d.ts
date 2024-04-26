@@ -90,7 +90,7 @@ declare namespace Contentstack {
     type TeamMember = {
       title: string
       description: string
-      image: {}
+      image: any
     }
   }
 }

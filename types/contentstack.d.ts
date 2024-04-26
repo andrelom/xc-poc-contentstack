@@ -81,5 +81,16 @@ declare namespace Contentstack {
       og_title: string
       og_description: string
     }
+
+    type TeamSection = {
+      title: string
+      team_members:TeamMember[]
+    }
+
+    type TeamMember = {
+      title: string
+      description: string
+      image: {}
+    }
   }
 }

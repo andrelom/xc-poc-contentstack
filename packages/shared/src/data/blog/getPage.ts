@@ -18,7 +18,7 @@ export default async function getPage({
   preview?: LivePreviewQuery
 }): Promise<Result<PageData>> {
   const result = await blog.api.find<PageData>('page', preview, (query) => {
-    return query.where('url', path).includeReference(['components','components.team']).toJSON()
+    return query.where('url', path).includeReference(['components','components.team_members']).toJSON()
   })
 
   if (!result.ok) {

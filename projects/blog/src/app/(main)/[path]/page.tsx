@@ -18,6 +18,7 @@ export default async function Page({ params, searchParams }: Core.Page<{ path: s
 
   
   if (!result.ok || !result.data) {
+    console.log('NOT FOUND =========================', result)
     return notFound()
   }
 

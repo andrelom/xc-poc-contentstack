@@ -9,7 +9,7 @@ export type HomePageData = Contentstack.Item<{
 }>
 
 export default async function getHomePage({ preview }: { preview?: LivePreviewQuery }): Promise<Result<HomePageData>> {
-  const result = await blog.api.find<HomePageData>('page_home', preview, (query) => {
+  const result = await blog.api.find<HomePageData>('content_page', preview, (query) => {
     return query.toJSON()
   })
 

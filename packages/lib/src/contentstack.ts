@@ -41,14 +41,17 @@ export class Contentstack {
 
       const stack = this.stack.ContentType(type).Query()
       const query = builder(stack)
-      const items = await query.find()
+      console.log('query===============');
+      const items = await query.find({debug: true})
 
+      console.log('query=============== done');
       this.setEditableTags(type, preview, items)
 
       return Result.success(items.flat())
     } catch (error) {
       const traceId = crypto.randomUUID()
 
+      console.log('find exception ===============', error)
       logger.error(error, `Contentstack (Trace ID '${traceId}'): Query for type '${type}'`)
 
       return Result.fail('Woops', { traceId })

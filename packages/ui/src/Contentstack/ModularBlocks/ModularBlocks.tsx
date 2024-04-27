@@ -17,10 +17,10 @@ export default function ModularBlocks({
 
     return entries.reduce<JSX.Element[]>((children, entry) => {
       for (const [name, Component] of available) {
-        const data = entry[name]
+        const data: any = entry[name]
 
         if (data) {
-          return [...children, <Component key={crypto.randomUUID()} data={data} />]
+          return [...children, <Component key={data.uid} data={data} />]
         }
       }
 

@@ -44,7 +44,7 @@ export class Contentstack {
       console.log('query===============');
       const items = await query.find({debug: true})
 
-      console.log('query=============== done');
+      console.log('query=============== done', items);
       this.setEditableTags(type, preview, items)
 
       return Result.success(items.flat())

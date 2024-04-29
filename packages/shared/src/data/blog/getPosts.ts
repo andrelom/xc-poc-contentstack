@@ -1,5 +1,5 @@
 import Result from '@xc/lib/Result'
-import { blog } from '@xc/shared/clients/contentstack'
+import { createBlogClient } from '@xc/shared/clients/contentstack'
 
 export type PostData = Contentstack.Item<{
   title: string
@@ -8,7 +8,7 @@ export type PostData = Contentstack.Item<{
 }>
 
 export default async function getPosts(): Promise<Result<PostData[]>> {
-  const result = await blog.api.find<PostData>('page_post', null, (query) => {
+  const result = await createBlogClient().api.find<PostData>('page_post', null, (query) => {
     return query.only(['title', 'url', 'created_at']).limit(10).toJSON()
   })
 

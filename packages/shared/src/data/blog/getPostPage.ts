@@ -1,7 +1,7 @@
 import type { LivePreviewQuery } from 'contentstack'
 
 import Result from '@xc/lib/Result'
-import { blog } from '@xc/shared/clients/contentstack'
+import { createBlogClient } from '@xc/shared/clients/contentstack'
 
 export type PostPageData = Contentstack.Item<{
   description: string
@@ -16,7 +16,7 @@ export default async function getPostPage({
   path: string
   preview?: LivePreviewQuery
 }): Promise<Result<PostPageData>> {
-  const result = await blog.api.find<PostPageData>('page_post', preview, (query) => {
+  const result = await createBlogClient().api.find<PostPageData>('page_post', preview, (query) => {
     return query.where('url', path).toJSON()
   })
 

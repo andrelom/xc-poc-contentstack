@@ -1,5 +1,5 @@
 import Result from '@xc/lib/Result'
-import { blog } from '@xc/shared/clients/contentstack'
+import { createBlogClient } from '@xc/shared/clients/contentstack'
 import GetPostsPageQuery from './queries/GetPostsPageQuery.graphql'
 
 export type PostsPageData = {
@@ -24,7 +24,7 @@ export type PostsPageData = {
 }
 
 export default async function getPostsPage(): Promise<Result<PostsPageData>> {
-  const response = await blog.gql.query({
+  const response = await createBlogClient().gql.query({
     query: GetPostsPageQuery,
   })
 

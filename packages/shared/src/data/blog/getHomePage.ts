@@ -1,7 +1,7 @@
 import type { LivePreviewQuery } from 'contentstack'
 
 import Result from '@xc/lib/Result'
-import { blog } from '@xc/shared/clients/contentstack'
+import { createBlogClient } from '@xc/shared/clients/contentstack'
 
 export type HomePageData = Contentstack.Item<{
   hero_section: Contentstack.Globals.HeroSection
@@ -9,7 +9,7 @@ export type HomePageData = Contentstack.Item<{
 }>
 
 export default async function getHomePage({ preview }: { preview?: LivePreviewQuery }): Promise<Result<HomePageData>> {
-  const result = await blog.api.find<HomePageData>('content_page', preview, (query) => {
+  const result = await createBlogClient().api.find<HomePageData>('content_page', preview, (query) => {
     return query.toJSON()
   })
 

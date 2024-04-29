@@ -9,7 +9,6 @@ type ArticleProp = {
 export default function ArticleSection({ data } : ArticleProp) {
   if (!data) return null
 
-  console.log('artcile data........', data)
   return (
     <section>
         <h1 {...tags(data, 'article_title')}>

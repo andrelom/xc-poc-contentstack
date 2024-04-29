@@ -6,7 +6,6 @@ import { tags } from '@xc/ui/Contentstack'
 export default function ArticleListing({ data }: ModularBlock<Contentstack.Globals.ArticleListing>) {
   if (!data) return null
 
-  console.log(data,'article listing.............')
   return (
     <section className='marketing-page'>
       <div className='marketing-pages-lightning'>

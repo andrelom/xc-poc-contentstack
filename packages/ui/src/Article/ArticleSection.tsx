@@ -16,6 +16,7 @@ export default function ArticleSection({ data } : ArticleProp) {
         </h1>
         <p className="written-date" {...tags(data, 'article_date')}>Revised {data.article_date}</p>
         <div {...tags(data, 'article_body')} dangerouslySetInnerHTML={{ __html: data?.article_body }} />
+        <div className="footnote" dangerouslySetInnerHTML={{__html:data?.disclaimer[0]?.disclaimer_text}}/>
     </section>
   )
 }

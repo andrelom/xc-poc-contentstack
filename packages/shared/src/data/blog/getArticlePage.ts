@@ -8,12 +8,13 @@ export type ArticlePageData = Contentstack.Item<{
       article_summary: string
       article_image: any
       article_date: Date
-      article_body: string
+      article_body: string,
+      disclaimer: any
     open_graph: Contentstack.Globals.OpenGraph
     $?: any
 }>
 
-export default async function getPage({
+export default async function getArticlePage({
   path,
   preview,
 }: {
@@ -21,7 +22,10 @@ export default async function getPage({
   preview?: LivePreviewQuery
 }): Promise<Result<ArticlePageData>> {
   const result = await createBlogClient().api.find<ArticlePageData>('article_page', preview, (query) => {
-    return query.where('url', path).toJSON()
+    return query
+      .where('url', path)
+      .includeReference(['disclaimer'])
+      .toJSON()
   })
 
   if (!result.ok) {

@@ -18,7 +18,7 @@ const raw = pino({
 const server: Logger = {
   info: (message: string) => raw.info(message),
   warn: (message: string) => raw.warn(message),
-  error: (data: any, message?: string) => raw.error(data, message),
+  error: (data: any, message?: string) => raw.error(JSON.stringify(data), message),
 }
 
 export default server

@@ -1,3 +1,5 @@
+import type { Logger } from './types'
+
 import pino from 'pino'
 
 if (typeof window !== 'undefined') {
@@ -13,7 +15,7 @@ const raw = pino({
   level: process.env.LOGGING_LEVEL ?? 'info',
 })
 
-const server = {
+const server: Logger = {
   info: (message: string) => raw.info(message),
   warn: (message: string) => raw.warn(message),
   error: (data: any, message?: string) => raw.error(data, message),

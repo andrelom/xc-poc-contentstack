@@ -1,7 +1,7 @@
 import type { ComponentType } from 'react'
 
 import { useMemo } from 'react'
-import logger from '@xc/lib/logger/client'
+import logger from '@xc/lib/logger'
 
 export type ModularBlock<T = any> = { data: T | null | undefined }
 

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import logger from '@xc/lib/logger/server'
+import logger from '@xc/lib/logger'
 import { toSitemapXML } from '@xc/lib/sitemap'
 import getSitemapItems from '@xc/shared/data/blog/getSitemapItems'
 
